@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<div class="container">
+  <header class="page-header">
+    <h1>Notes</h1>
+    <p>
+This is mostly a place for me to record working and write about things while I still understand them.
+{% comment %}
+RSS available at <a href="{{ "/feed.xml" | prepend: site.baseurl }}">feed.xml</a>.
+{% endcomment %}
+    </p>
+  </header>
+
+  <article>
+    <ul class="posts">
+      {% for post in site.categories.notes %}
+      <li>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </article>
+</div>

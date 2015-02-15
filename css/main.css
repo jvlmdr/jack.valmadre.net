@@ -1,8 +1,71 @@
+html {
+  /* position: relative; /* for sticky footer */
+  /* min-height: 100%;   /* for sticky footer */
+}
+
 body {
-  padding-top: 50px;
-  padding-bottom: 20px;
+  padding-top: 50px;    /* height of header */
+  /* padding-bottom: 50px; /* for sticky footer */
+}
+
+.page-content {
+  padding-top: 12pt;
+  padding-bottom: 12pt;
 }
 
 footer {
+  /* position: absolute; /* for sticky footer */
+  /* bottom: 0;          /* for sticky footer */
+  /* width: 100%;        /* for sticky footer */
+  /* height: 50px;       /* for sticky footer */
   text-align: center;
+  padding-bottom: 12pt;
+  padding-top: 12pt;
+  border-top: 1px solid #eeeeee; /* border-bottom of .page-header in bootstrap.css */
+}
+
+.page-header {
+  /* override .page-header in bootstrap.css */
+  margin: 17pt 0 17pt;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+/* Style for list of blog posts. */
+
+ul.posts {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.posts li {
+  margin: 2pt 0;
+}
+
+/* Style for list of blog posts. */
+
+ul.papers {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.papers li {
+  margin: 12pt 0;
+}
+
+ul.papers .paper-title {
+}
+
+ul.papers .paper-authors {
+  color: #999999;
+}
+
+/* Style for tables. */
+
+td {
+  border: 1px solid black;
+  padding-left: 4pt;
+  padding-right: 4pt;
 }

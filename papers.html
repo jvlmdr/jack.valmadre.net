@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<div class="container">
+  <header class="page-header">
+    <h1>Papers</h1>
+  </header>
+
+  <article>
+    <ul class="papers">
+      {% for paper in site.categories.papers %}
+      <li>
+        <div class="paper-title">
+          {% if paper.link %}
+          <a href="{{ paper.link }}">{{ paper.title }}</a> {% if paper.code %}(with code){% endif %}
+          {% else %}
+          {{ paper.title }}
+          {% endif %}
+        </div>
+        <div class="paper-authors">
+          {% for author in paper.authors %}{% if forloop.first == false %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}
+          {{ author }}{% endfor %}
+        </div>
+        <div class="paper-meta">
+          {% comment %}
+          {{ paper.pub }}{% if paper.page %},
+          <a href="{{ paper.page }}">Web page</a>{% endif %}{% if paper.pdf %},
+          <a href="{{ paper.pdf }}">Paper</a>{% endif %}{% if paper.poster %},
+          <a href="{{ paper.poster }}">Poster</a>{% endif %}{% if paper.publisher %},
+          <a href="{{ paper.publisher }}">Publisher</a>{% endif %}
+          {% endcomment %}
+          {{ paper.content | remove: '<p>' | remove: '</p>' }}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </article>
+</div>
