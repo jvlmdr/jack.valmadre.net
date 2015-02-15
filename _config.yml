@@ -1,9 +1,9 @@
 # Site settings
 title: Jack Valmadre
 email: jack.valmadre@gmail.com
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+description: "I'm a computer vision researcher working on object detection and 3D reconstruction."
 baseurl: ""
-url: "http://yourdomain.com"
+url: "http://jack.valmadre.net"
 twitter_username: pterojacktyl
 github_username:  jvlmdr
 
