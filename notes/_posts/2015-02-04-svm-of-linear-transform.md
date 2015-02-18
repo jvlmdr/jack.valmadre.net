@@ -5,6 +5,7 @@ math:   true
 ---
 
 This post derives a result from the 2010 PAMI paper of Ashraf, Lucey and Chen, <a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=5432220">Reinterpreting the Application of Gabor Filters as a Manipulation of the Margin in Linear Support Vector Machines</a>.
+Thanks to Mark Cox for discussion.
 
 The support vector machine optimisation problem is
 
@@ -84,13 +85,13 @@ $$
 z \in \operatorname{col}(A^{T}) \subset \mathbb{R}^{n} \enspace .
 $$
 
-While it is possible to make a similar substitution for $$w$$, the final optimisation problem is
+While it is still possible to make the substitution $$w^{T} w = z V S^{-2} V^{T} z$$, however it is no longer the case that $$V S^{-2} V^{T} = (A^{T} A)^{-1}$$, and instead we must use the norm weighted by the pseudo-inverse $$(A^{T} A)^{\dagger} = A^{\dagger} (A^{\dagger})^{T} = A^{T} (A A^{T})^{-2} A$$ in the constrained optimisation problem
 
 $$
 \begin{aligned}
-\min_{z} \; & \frac{1}{2} \|z\|^{2}_{(A^{T} A)^{-1}} + C \sum_{i} \max(0, 1 - y_{i} x_{i}^{T} z) \\
-\text{s.t.} \; & z \in \operatorname{col}(A^{T})
+\min_{z} \; & \frac{1}{2} \|z\|^{2}_{(A^{T} A)^{\dagger}} + C \sum_{i} \max(0, 1 - y_{i} x_{i}^{T} z) \\
+\text{s.t.} \; & z \in \operatorname{col}(A^{T}) \enspace .
 \end{aligned}
 $$
 
-which does not resemble a canonical SVM.
+This might be considered a weighted margin where some of the eigenvalues are infinite, confining the solution to a subspace.
