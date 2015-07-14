@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl }}">
 
 <!-- MathJax -->
+{% if page.math %}
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   jax: ["input/TeX","output/HTML-CSS"],
@@ -32,7 +33,6 @@ MathJax.Hub.Config({
   "HTML-CSS": { availableFonts: ["TeX", "STIX-Web"] }
 });
 </script>
-{% if page.math %}
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 {% endif %}
 <!-- Google Analytics -->
