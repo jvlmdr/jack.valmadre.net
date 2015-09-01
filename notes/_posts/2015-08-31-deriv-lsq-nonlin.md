@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Derivative of Non-Linear Least-Squares Minimiser
+title:  Derivative of non-linear least-squares minimiser
 date:   2015-08-31 18:00:00
 math:   true
 ---
