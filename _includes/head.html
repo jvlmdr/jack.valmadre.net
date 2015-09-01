@@ -30,7 +30,10 @@ MathJax.Hub.Config({
   TeX: {
     extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
   },
-  "HTML-CSS": { availableFonts: ["TeX", "STIX-Web"] }
+  "HTML-CSS": { availableFonts: ["TeX", "STIX-Web"] },
+  tex2jax: {
+    inlineMath: [['$', '$']]
+  }
 });
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>

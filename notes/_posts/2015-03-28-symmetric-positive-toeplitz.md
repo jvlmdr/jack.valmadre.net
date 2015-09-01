@@ -27,14 +27,14 @@ The period $$m$$ should be at least $$2p - 1$$ to avoid periodic effects.
 If $$m = p$$ then the matrix will be circulant Toeplitz.
 The Fourier transform can be used to compute the auto-correlation.
 
-```
+{% highlight matlab %}
 p = 100;
 m = 2*p-1;
 x = randn(m, 1);
 a = ifft(conj(fft(x)) .* fft(x)) / m;
 a = a(1:p);
 A = toeplitz(a, a);
-```
+{% endhighlight %}
 
 ### Sampled continuous function
 
@@ -75,11 +75,11 @@ This is easily achieved using the fact that any subset of the rows and columns o
 If $$x^{T} A x$$ for all $$x$$, then $$y^{T} P^{T} A P y = (P y)^{T} A (P y) \ge 0$$ for all $$y$$.
 Therefore we can simply take a finite section of the infinite matrix and be guaranteed that it is positive semi-definite.
 
-```
+{% highlight matlab %}
 p = 100;
 t = 0:p-1;
 a = exp(-abs(t)/10);
 A = toeplitz(a, a);
-```
+{% endhighlight %}
 
 This gives us two alternative methods by which to obtain symmetric positive semi-definite Toeplitz matrices.

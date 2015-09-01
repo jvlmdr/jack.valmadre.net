@@ -5,8 +5,9 @@ description: "I'm a computer vision researcher working on object detection and 3
 baseurl: ""
 url: "http://jack.valmadre.net"
 twitter_username: pterojacktyl
-github_username:  jvlmdr
+github_username: jvlmdr
 
 # Build settings
 markdown: kramdown
 permalink: pretty
+highlighter: pygments
