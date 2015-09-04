@@ -49,11 +49,11 @@ $$
 This is the solution to a linear least-squares objective
 
 $$
-\delta y^{\star}(x) \approx \arg\min_{\delta y} \|A(x) \cdot \delta y - b(x)\|^{2}
+\delta y^{\star}(x) = \arg\min_{\delta y} \|A(x) \cdot \delta y - b(x)\|^{2}
 $$
 
-where $b(x) = -r(x, \hat{y})$ and $A(x) = \frac{\partial r}{\partial y}(x, \hat{y})$ is $p \times n$.
-The derivatives of $\delta y^{\star}(x)$ with respect to $A$ and $b$ [are known]({% post_url 2015-08-31-deriv-lsq %}).
+where $A(x) = \frac{\partial r}{\partial y}(x, \hat{y})$ is $p \times n$ and $b(x) = -r(x, \hat{y})$.
+The derivative of this expression is
 
 $$
 \frac{\partial \delta y^{\star}}{\partial x}
@@ -63,12 +63,14 @@ $$
   \underbrace{\left[\frac{\partial}{\partial x} b(x)\right]}_{p \times m}
 $$
 
+where $A^{\dagger} = (A^{T} A)^{-1} A^{T}$ is the left-inverse and $a \equiv \operatorname{vec}(A)$.
+
+The derivatives of $\delta y^{\star}$ with respect to $A$ and $b$ are known from [the post about the linear problem]({% post_url 2015-08-31-deriv-lsq %}).
 The derivatives of the parameters of the linear system are
 
 $$
 \frac{\partial}{\partial x} \operatorname{vec} A(x)
-  = \frac{\partial}{\partial x} \operatorname{vec}\underbrace{\left(\frac{\partial r}{\partial y}(x, \hat{y})\right)}_{p \times n}
-  = \underbrace{\frac{\partial^{2} r}{\partial x \partial y}(x, \hat{y})}_{(p, n) \times m}
+  = \underbrace{\frac{\partial}{\partial x} \operatorname{vec}\underbrace{\left(\frac{\partial r}{\partial y}(x, \hat{y})\right)}_{p \times n}}_{(p, n) \times m}
 $$
 
 $$
@@ -82,19 +84,21 @@ This is enough to compute derivatives
 
 The complete source for this experiment can be [found on Github](https://github.com/jvlmdr/arg-min-deriv).
 
-The overall expression for the derivative can be found (using some notation from the derivative of the linear least-squares minimiser)
+The overall expression for the derivative can be found
 
 $$
 \begin{align}
 \frac{\partial \delta y^{\star}}{\partial x}
 & = \left\{-[(\delta y^{\star})^{T} \otimes G^{-1} A^{T}] - [(A \delta y^{\star} - b)^{T} \otimes G^{-1}] J_{m n}\right\}
-  \left(\frac{\partial^{2} r}{\partial x \partial y}(x, \hat{y})\right) \\
-& \qquad - (A^{T} A)^{-1} A^{T} \left(\frac{\partial r}{\partial x}(x, \hat{y})\right)
+  \left[\frac{\partial}{\partial x} \operatorname{vec}\left(\frac{\partial r}{\partial y}(x, \hat{y})\right)\right] \\
+& \qquad - A^{\dagger} \left(\frac{\partial r}{\partial x}(x, \hat{y})\right)
 \end{align}
 $$
 
+where $G = A^{T} A$ and $J_{m n}$ is the linear operator such that $\operatorname{vec}(X^{T}) = J_{m n} \operatorname{vec}(X)$ if $X$ is $m \times n$.
+
 There might be some tensor notation to better express this.
-The derivatives with respect to single elements of $x$ have a neater expression
+The derivatives with respect to single elements of $x$ at least have a neater expression
 
 $$
 \frac{\partial}{\partial x_{i}} \operatorname{vec} A(x)
@@ -106,7 +110,7 @@ $$
 $$
 \begin{align}
 \frac{\partial \delta y^{\star}}{\partial x_{i}}
-& = -(A^{T} A)^{-1} \left\{ A^{T} ( C_{i} \delta y^{\star} + d_{i} )
+& = -G^{-1} \left\{ A^{T} ( C_{i} \delta y^{\star} + d_{i} )
   + C_{i}^{T} (A \delta y^{\star} - b) \right\}
 \end{align}
 $$
