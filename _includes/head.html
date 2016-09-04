@@ -28,7 +28,8 @@ MathJax.Hub.Config({
   jax: ["input/TeX","output/HTML-CSS"],
   extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
   TeX: {
-    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+    extensions: ["AMSmath.js","AMSsymbols.js"] {% if page.macros %} ,
+    Macros: {{ page.macros }} {% endif %}
   },
   "HTML-CSS": { availableFonts: ["TeX", "STIX-Web"] },
   tex2jax: {
