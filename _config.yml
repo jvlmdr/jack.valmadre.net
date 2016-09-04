@@ -1,7 +1,7 @@
 # Site settings
 title: Jack Valmadre
 email: jack.valmadre@gmail.com
-description: "I'm a computer vision researcher working on object detection and 3D reconstruction."
+description: "Computer vision researcher working on detection, tracking and 3D reconstruction."
 baseurl: ""
 url: "http://jack.valmadre.net"
 twitter_username: pterojacktyl
@@ -11,3 +11,6 @@ github_username: jvlmdr
 markdown: kramdown
 permalink: pretty
 highlighter: pygments
+
+# Content filters
+future: true
