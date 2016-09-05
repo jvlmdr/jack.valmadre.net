@@ -72,7 +72,7 @@ We will now use matrix differentials and the product rule to find the derivative
 This function can alternatively be defined implicitly $X Y = I$.
 Taking differentials of both sides gives
 \begin{align}
-dY X + Y dX & = 0 \\
+dY X + Y dX & = 0 \\\
 dY & = -Y dX Y
 \end{align}
 This gives an expression for the differential $dY = df(X; dX)$ that is linear in $dX$ as expected.
