@@ -9,8 +9,8 @@ macros: '{reals: "\\mathbb{R}", trace: "\\operatorname{tr}", tovec: "\\operatorn
 - dummy list
 {:toc}
 
-Differentials
--------------
+Introduction to differentials
+-----------------------------
 
 ### Differential of a vector function ###
 
@@ -36,7 +36,7 @@ The differential $dh$ is clearly linear in $u$ because it is the composition of 
 ### Differential of a variable ###
 
 The chain rule enables some useful notation.
-Let us introduce the variable $y = f(x)$ and write the differential of the \emph{variable} $y$ as a function of the differential of $x$
+Let us introduce the variable $y = f(x)$ and write the differential of the *variable* $y$ as a function of the differential of $x$
 \begin{equation} dy = df(x; dx) \enspace . \end{equation}
 We can similarly introduce $z = g(y)$ and write the differential of $z$
 \begin{equation} dz = dg(y; dy) \enspace . \end{equation}
@@ -79,7 +79,7 @@ This gives an expression for the differential $dY = df(X; dX)$ that is linear in
 
 ### Finding derivatives using differentials ###
 
-Note that the differential provides the derivative as an \emph{operator}
+Note that the differential provides the derivative as an *operator*
 \begin{equation}
 u \mapsto \frac{\partial f(x)}{\partial x} \times u
 \end{equation}
@@ -109,7 +109,7 @@ Back-propagation and differentials
 
 ### Back-propagation ###
 
-Back-propagation is an algorithm for computing the derivatives of a \emph{scalar} energy $E$, which is a composition of $n$ functions
+Back-propagation is an algorithm for computing the derivatives of a *scalar* energy $E$, which is a composition of $n$ functions
 \begin{equation}
 E = f_{n}( \cdots f_{2}(f_{1}( x , \theta_{1}), \theta_{2}) \cdots , \theta_{n}) \enspace ,
 \end{equation}
@@ -122,7 +122,7 @@ Let the variables $y_{i}$ represent the intermediate results so that
 \begin{equation}
 y_{i} = f_{i}(y_{i-1}, \theta_{i}) \enspace ,
 \end{equation}
-with $y_{0} = x$ and $y_{n} = E$, and let $m_{i}$ denote the dimension of $y_{i}$ and $p_{i}$ the dimension of $\theta_{i}$.
+with $y_{0} = x$ and $y_{n} = E$.
 
 It is trivial to obtain the derivatives with respect to $y_{n-1}$ and $\theta_{n}$ from the derivatives of $f_{n}$ according to
 \begin{align}
@@ -131,18 +131,16 @@ It is trivial to obtain the derivatives with respect to $y_{n-1}$ and $\theta_{n
 \frac{\partial E}{\partial \theta_{n}}
   & = \frac{\partial f_{n}(y_{n-1}, \theta_{n})}{\partial \theta_{n}} \enspace .
 \end{align}
-The derivative with respect to $\theta_{i}$ can then be obtained
-\begin{equation}
+Back-propagation proceeds by obtaining the derivatives with respect to $\theta_{i}$ and $y_{i-1}$ from the derivative with respect to $y_{i}$
+\begin{align}
 \frac{\partial E}{\partial \theta_{i}}
-= \frac{\partial E}{\partial y_{i}} \times \frac{\partial y_{i}}{\partial \theta_{i}}
-= \frac{\partial E}{\partial y_{i}} \times \frac{\partial f_{i}(y_{i-1}, \theta_{i})}{\partial \theta_{i}}
-\end{equation}
-and the derivative with respect to $y_{i-1}$ is similarly obtained
-\begin{equation}
+  & = \frac{\partial E}{\partial y_{i}} \times \frac{\partial y_{i}}{\partial \theta_{i}}
+    = \frac{\partial E}{\partial y_{i}} \times \frac{\partial f_{i}(y_{i-1}, \theta_{i})}{\partial \theta_{i}} \\\
 \frac{\partial E}{\partial y_{i-1}}
-= \frac{\partial E}{\partial y_{i}} \times \frac{\partial y_{i}}{\partial y_{i-1}}
-= \frac{\partial E}{\partial y_{i}} \times \frac{\partial f_{i}(y_{i-1}, \theta_{i})}{\partial y_{i-1}} \enspace .
-\end{equation}
+  & = \frac{\partial E}{\partial y_{i}} \times \frac{\partial y_{i}}{\partial y_{i-1}}
+    = \frac{\partial E}{\partial y_{i}} \times \frac{\partial f_{i}(y_{i-1}, \theta_{i})}{\partial y_{i-1}}
+\end{align}
+and so on.
 
 ### Forward propagation using differentials ###
 
