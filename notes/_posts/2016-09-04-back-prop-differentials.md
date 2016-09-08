@@ -10,7 +10,7 @@ macros: '{reals: "\\mathbb{R}", trace: "\\operatorname{tr}", tovec: "\\operatorn
 {:toc}
 
 Differentials
----
+-------------
 
 ### Differential of a vector function ###
 
@@ -105,7 +105,7 @@ provides the derivative
 
 
 Back-propagation and differentials
----
+----------------------------------
 
 ### Back-propagation ###
 
@@ -249,3 +249,25 @@ and then
 \end{align}
 However, it is somewhat messier.
 Since we used differentials to find the forward operator, we might as well use them to find the backward operator.
+
+More examples
+--------------
+
+### Gram matrix ###
+
+Consider the function $Y = f(X) = X^{T} X$. Taking differentials and applying the product rule gives
+
+\begin{equation}
+dY = dX^{T} X + X^{T} dX
+\end{equation}
+
+then making the substitution gives
+
+\begin{align}
+\langle \bar{Y}, dY \rangle & = \langle \bar{Y}, dX^{T} X + X^{T} dX \rangle \\\
+& = \trace(\bar{Y}^{T} dX^{T} X) + \trace(\bar{Y}^{T} X^{T} dX) \\\
+& = \trace(dX^{T} X \bar{Y}^{T}) + \trace[(X \bar{Y})^{T} dX] \\\
+& = \langle dX, X \bar{Y}^{T} + X \bar{Y} \rangle = \langle \bar{X}, dX \rangle
+\end{align}
+
+and therefore $$\bar{X} = X (\bar{Y} + \bar{Y}^{T})$$.
