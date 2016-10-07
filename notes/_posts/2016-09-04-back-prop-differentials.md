@@ -342,7 +342,7 @@ substitution gives
 $$\langle \bar{y}, dy \rangle = \langle \bar{y}, da * x + a * dx \rangle \enspace .$$
 
 This inner product has an equivalent expression in the Fourier domain
-since inner products are preserved.
+since inner products are preserved
 
 $$\begin{aligned}
 \langle F\bar{y}, F\{da * x + a * dx\} \rangle
@@ -354,8 +354,9 @@ $$\begin{aligned}
 and therefore
 
 $$\begin{aligned}
-\langle \bar{y}, dy \rangle
-& = \langle x \star \bar{y}, da \rangle + \langle a \star \bar{y}, dx \rangle \\
-& = \langle \bar{a}, da \rangle + \langle \bar{x}, dx \rangle
-\enspace .\end{aligned}$$
+F \bar{a} & = \hat{\bar{y}} \circ \hat{x}^* &
+F \bar{x} & = \hat{\bar{y}} \circ \hat{a}^* \\
+\bar{a} & = x \star \bar{y} &
+\bar{x} & = a \star \bar{y}\end{aligned}$$
 
+where $\star$ denotes circular cross-correlation.
