@@ -348,8 +348,6 @@ $$\begin{aligned}
 \langle F\bar{y}, F\{da * x + a * dx\} \rangle
 & = \langle \hat{\bar{y}}, \hat{da} \circ \hat{x} \rangle
   + \langle \hat{\bar{y}}, \hat{a} \circ \hat{dx} \rangle \\
-& = \operatorname{sum}(\hat{\bar{y}} \circ \hat{da}^* \circ \hat{x}^*)
-  + \operatorname{sum}(\hat{\bar{y}} \circ \hat{a}^* \circ \hat{dx}^*) \\
 & = \langle \hat{\bar{y}} \circ \hat{x}^*, \hat{da} \rangle
   + \langle \hat{\bar{y}} \circ \hat{a}^*, \hat{dx} \rangle\end{aligned}$$
 
