@@ -58,4 +58,10 @@ $$\begin{aligned}
 & = \mathbb{E}[S(X)] + \operatorname{Var}[M(X)]
 \end{aligned}$$
 
-This is the mean of the variances plus the variance of the means.
+This is the mean of the variances plus the variance of the means, and can alternatively be written
+
+$$
+\operatorname{Var}_{x, y}[f(x, y)]
+= \mathbb{E}_{x}[\operatorname{Var}_{y}[f(x, y)]]
++ \operatorname{Var}_{x}[\mathbb{E}_{y}[f(x, y)]]
+$$
