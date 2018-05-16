@@ -43,14 +43,16 @@ $$\begin{aligned}
 Hence, the joint variance can be computed entirely in terms of $\mathbb{E}[f(x, Y)]$ and $\operatorname{Var}[f(x, Y)]$.
 
 $$\begin{aligned}
-\operatorname{Var}[f(X, Y)] & = \int_x \mathbb{E}[f(x, Y)]^2 p(x) dx - \left( \int_x \mathbb{E}[f(x, Y)] p(x) dx \right)^2 \\
+\operatorname{Var}[f(X, Y)] & = \int_x (\mathbb{E}[f(x, Y)])^2 p(x) dx - \left( \int_x \mathbb{E}[f(x, Y)] p(x) dx \right)^2 \\
 & = \int_x \left( \operatorname{Var}[f(x, Y)] + (\mathbb{E}[f(x, Y)])^2 \right) p(x) dx - \left( \int_x \mathbb{E}[f(x, Y)] p(x) dx \right)^2
 \end{aligned}$$
 
-Note that this differs significantly from simply taking the mean of the independent variances
+Compare this to the mean of the variances
 
 $$\int_x \operatorname{Var}[f(x, Y)]  p(x) dx$$
 
-or taking the variance of the independent means
+and the variance of the means
 
 $$\int_x \left( \mathbb{E}[f(x, Y)] - \int_{x'} \mathbb{E}[f(x', Y)] p(x') dx' \right)^{2} p(x) dx$$
+
+(incomplete)
