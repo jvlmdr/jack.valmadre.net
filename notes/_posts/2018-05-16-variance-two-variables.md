@@ -7,7 +7,7 @@ math:   true
 
 Suppose that we want to compute $\operatorname{Var}[f(X, Y)]$ where both $X$ and $Y$ are independent random variables.
 Imagine that, for a single sample $X = x$, we have an efficient method to estimate $\operatorname{Var}[f(x, Y)]$.
-For example, if $Y$ is a testing set and $f(X, Y)$ is the mean performance on the testing set, then its variance can be obtained efficiently using the bootstrap estimator.
+For example, if $Y$ is a testing set and $f(x, Y)$ is the mean performance on the testing set, then its variance can be obtained efficiently using the bootstrap estimator.
 Note that we will use lower-case to denote a normal variable and upper-case to denote a random variable.
 
 Let $M(x)$ and $S(x)$ denote the mean and variance that can be computed efficiently
@@ -22,9 +22,8 @@ Then, the question is, how can we compute $\operatorname{Var}[f(X, Y)]$ in terms
 First, let's look at the decomposition of the variance that we can compute easily
 
 $$\begin{aligned}
-S(x) = \operatorname{Var}[f(x, Y)] & = \mathbb{E}[\{f(x, Y) - \mathbb{E}[f(x, Y)]\}^2] \\
-& = \mathbb{E}[f(x, Y)^2] - (\mathbb{E}[f(x, Y)])^2 \\
-S(x) & = \mathbb{E}[f(x, Y)^2] - M^2(x)
+S(x) & = \mathbb{E}[f(x, Y)^2] - (\mathbb{E}[f(x, Y)])^2 \\
+& = \mathbb{E}[f(x, Y)^2] - M^2(x)
 \end{aligned}$$
 
 Now, let's examine the joint mean and variance
@@ -44,7 +43,9 @@ The first term of the variance is
 $$\begin{aligned}
 \mathbb{E}[f(X, Y)^2] & = \int_x \int_y f(x, y)^2 p(x) p(y) dx dy \\
 & = \int_x \left( \int_y f(x, y)^2 p(y) dy \right) p(x) dx \\
-& = \int_x \mathbb{E}[f(x, Y)^2] p(x) dx
+& = \int_x \mathbb{E}[f(x, Y)^2] p(x) dx \\
+& = \int_x \{ S(x) + M^2(x) \} p(x) dx \\
+& = \mathbb{E}[S(X) + M^2(X)]
 \end{aligned}$$
 
 Hence, the joint variance can be computed entirely in terms of $M(X)$ and $S(X)$.
@@ -52,8 +53,6 @@ Hence, the joint variance can be computed entirely in terms of $M(X)$ and $S(X)$
 $$\begin{aligned}
 \operatorname{Var}[f(X, Y)]
 & = \mathbb{E}[f(X, Y)^2] - (\mathbb{E}[f(X, Y)])^2 \\
-& = \int_x \mathbb{E}[f(x, Y)^2] p(x) dx - (\mathbb{E}[M(X)])^2 \\
-& = \int_x \{ S(x) + M^2(x) \} p(x) dx - (\mathbb{E}[M(X)])^2 \\
 & = \mathbb{E}[S(X) + M^2(X)] - (\mathbb{E}[M(X)])^2 \\
 & = \mathbb{E}[S(X)] + \mathbb{E}[M^2(X)] - (\mathbb{E}[M(X)])^2 \\
 & = \mathbb{E}[S(X)] + \operatorname{Var}[M(X)]
