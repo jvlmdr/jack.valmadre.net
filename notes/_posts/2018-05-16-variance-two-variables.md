@@ -5,7 +5,7 @@ date:   2018-05-16
 math:   true
 ---
 
-Suppose that we want to compute $\operatorname{Var}[f(X, Y)]$ where both $X$ and $Y$ are independent random variables.
+Suppose that we want to compute $\operatorname{Var}[f(X, Y)]$ where $X$ and $Y$ are independent random variables.
 Imagine that, for a single sample $X = x$, we have an efficient method to estimate $\operatorname{Var}[f(x, Y)]$.
 For example, if $Y$ is a testing set and $f(x, Y)$ is the mean performance on the testing set, then its variance can be obtained efficiently using the bootstrap estimator.
 Note that we will use lower-case to denote a normal variable and upper-case to denote a random variable.
