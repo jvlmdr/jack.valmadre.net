@@ -57,22 +57,7 @@ Hence the minimizer $x^{\star}$ of the constrained problem is also a minimize of
 
 Instead of separating the two cases of active and inactive constraints at the start, we can drop the assumption that $h(x^{\star}) = \tau$.
 
-As before, we know the _value_ of the minimum of the regularized problem with $\lambda = \alpha^{\star}$ (regardless of whether or not the inequality constraint is active).
-
-$$ \min_{x} \{ f(x) + \alpha^{\star} h(x) \} = f(x^{\star}) + \alpha^{\star} \tau $$
-
-Then complementary slackness provides the condition
-
-$$ \alpha^{\star} (h(x^{\star}) - \tau) = 0 $$
-
-and therefore either $h(x^{\star}) = \tau$ as above, or $\alpha^{\star} = 0$.
-When $\alpha^{\star} = 0$, we obtain
-
-$$ \min_{x} f(x) = f(x^{\star}) $$
-
-which again shows that $x^{\star}$ is a minimizer of the regularized problem with $\lambda = \alpha^{\star} = 0$.
-
-Note: Complementary slackness is obtained by the following inequality chain (taken from Boyd and Vandenberghe)
+Consider the chain of inequalities which provides complementary slackness (taken from Boyd and Vandenberghe)
 
 $$ \begin{aligned}
 f(x^{\star}) & = g(\alpha^{\star}) \\
@@ -82,3 +67,17 @@ f(x^{\star}) & = g(\alpha^{\star}) \\
 \end{aligned} $$
 
 Since the first and last expressions are equal, all inequalities in the chain hold with equality.
+This provides
+
+$$ \begin{aligned}
+\min_{x} \{ f(x) + \alpha^{\star} (h(x) - \tau) \} & = f(x^{\star}) + \alpha^{\star} (h(x^{\star}) - \tau) \\
+\min_{x} \{ f(x) + \alpha^{\star} h(x) \} & = f(x^{\star}) + \alpha^{\star} h(x^{\star})
+\end{aligned} $$
+
+This clearly shows that the minimum value of the regularized problem with $\lambda = \alpha^{\star}$ is obtained by the minimizer of the constrained problem $x^{\star}$.
+
+Note that the complementary slackness condition is
+
+$$ \alpha^{\star} (h(x^{\star}) - \tau) = 0 $$
+
+and therefore either $h(x^{\star}) = \tau$ or $\alpha^{\star} = 0$.
