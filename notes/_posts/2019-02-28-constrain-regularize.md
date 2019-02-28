@@ -74,10 +74,10 @@ $$ \begin{aligned}
 \min_{x} \{ f(x) + \alpha^{\star} h(x) \} & = f(x^{\star}) + \alpha^{\star} h(x^{\star})
 \end{aligned} $$
 
-This clearly shows that the minimum value of the regularized problem with $\lambda = \alpha^{\star}$ is obtained by the minimizer of the constrained problem $x^{\star}$.
+This clearly shows that the minimum value of the regularized problem with $\lambda = \alpha^{\star}$ is obtained at the minimizer of the constrained problem $x = x^{\star}$.
 
 Note that the complementary slackness condition is
 
 $$ \alpha^{\star} (h(x^{\star}) - \tau) = 0 $$
 
-and therefore either $h(x^{\star}) = \tau$ or $\alpha^{\star} = 0$.
+and therefore either $h(x^{\star}) = \tau$ or $\alpha^{\star} = 0$ as above.
