@@ -23,7 +23,7 @@ Let $x^{\star}$ denote a minimizer of the constrained problem, which therefore s
 We seek to show that $x^{\star}$ is also a minimizer of the regularized problem.
 
 First we observe that, if the inequality constraint is inactive (strict) at the minimizer $h(x^{\star}) < \tau$ then the constrained optimization problem is identical to the regularized problem with $\lambda = 0$.
-Therefore we henceforth assume that the inequality constraint is active at the minimizer $h(x^{\star}) = \tau$.
+Therefore we are free to assume at any point that the inequality constraint is active at the minimizer $h(x^{\star}) = \tau$.
 
 Let us now consider the Lagrangian dual of the constrained problem, introducing the scalar dual variable $\alpha$.
 
@@ -46,13 +46,33 @@ f(x^{\star}) & = g(\alpha^{\star}) \\
 f(x^{\star}) + \alpha^{\star} \tau & = \min_{x} \{ f(x) + \alpha^{\star} h(x) \}
 \end{aligned} $$
 
-Now we know the _value_ of the minimum of the regularized problem with $\lambda = \alpha^{star}$.
-All that remains is to show that this minimum is obtained at $x = x^{\star}$, the minimizer of the constrained problem.
-This is evident from the fact that $h(x^{\star}) = \tau$.
+Now we know the _value_ of the minimum of the regularized problem with $\lambda = \alpha^{\star}$.
+All that remains is to show that this minimum value is obtained at $x = x^{\star}$
+
+$$ f(x^{\star}) + \alpha^{\star} h(x^{\star}) = f(x^{\star}) + \alpha^{\star} \tau $$
+
+Hence the minimizer $x^{\star}$ of the constrained problem is also a minimize of the regularized problem with $\lambda = \alpha^{\star}$.
 
 ## Alternative method
 
-Instead of separating the two cases of active and inactive constraints at the start, we can drop the assumption that $h(x^{\star}) = \tau$ and use the inequality chain that proves complementary slackness.
+Instead of separating the two cases of active and inactive constraints at the start, we can drop the assumption that $h(x^{\star}) = \tau$.
+
+As before, we know the _value_ of the minimum of the regularized problem with $\lambda = \alpha^{\star}$ (regardless of whether or not the inequality constraint is active).
+
+$$ \min_{x} \{ f(x) + \alpha^{\star} h(x) \} = f(x^{\star}) + \alpha^{\star} \tau $$
+
+Then complementary slackness provides the condition
+
+$$ \alpha^{\star} (h(x^{\star}) - \tau) = 0 $$
+
+and therefore either $h(x^{\star}) = \tau$ as above, or $\alpha^{\star} = 0$.
+When $\alpha^{\star} = 0$, we obtain
+
+$$ \min_{x} f(x) = f(x^{\star}) $$
+
+which again shows that $x^{\star}$ is a minimizer of the regularized problem with $\lambda = \alpha^{\star} = 0$.
+
+Note: Complementary slackness is obtained by the following inequality chain (taken from Boyd and Vandenberghe)
 
 $$ \begin{aligned}
 f(x^{\star}) & = g(\alpha^{\star}) \\
@@ -61,15 +81,4 @@ f(x^{\star}) & = g(\alpha^{\star}) \\
 & \le f(x^{\star})
 \end{aligned} $$
 
-This means that all inequalities in the chain hold with equality, and therefore
-
-$$ \begin{aligned}
-\min_{x} \{ f(x) + \alpha^{\star} (h(x) - \tau) \} & = f(x^{\star}) \\
-\min_{x} \{ f(x) + \alpha^{\star} h(x) \} & = f(x^{\star}) + \alpha^{\star} \tau
-\end{aligned} $$
-
-This yields the complementary slackness condition
-
-$$ \alpha^{\star} (h(x^{\star}) - \tau) = 0 $$
-
-Hence either $h(x^{\star}) = \tau$ as above, or $\alpha^{\star} = 0$ (and the optimization problems are equivalent).
+Since the first and last expressions are equal, all inequalities in the chain hold with equality.
