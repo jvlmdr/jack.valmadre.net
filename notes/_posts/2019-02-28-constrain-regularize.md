@@ -22,8 +22,8 @@ The question is: for each value of $\tau$, does there exist some $\lambda$ such 
 Let $x^{\star}$ denote a minimizer of the constrained problem, which therefore satisfies $h(x^{\star}) \le \tau$ (feasibility).
 We seek to show that $x^{\star}$ is also a minimizer of the regularized problem.
 
-First we observe that, if the inequality constraint is inactive (strict) at the minimizer $h(x^{\star}$) < \tau$ then the constrained optimization problem is identical to the regularized problem with $\lambda = 0$.
-Therefore we henceforth assume that the inequality constraint is active at the minimizer $h(x^{\star}$) = \tau$.
+First we observe that, if the inequality constraint is inactive (strict) at the minimizer $h(x^{\star}) < \tau$ then the constrained optimization problem is identical to the regularized problem with $\lambda = 0$.
+Therefore we henceforth assume that the inequality constraint is active at the minimizer $h(x^{\star}) = \tau$.
 
 Let us now consider the Lagrangian dual of the constrained problem, introducing the scalar dual variable $\alpha$.
 
