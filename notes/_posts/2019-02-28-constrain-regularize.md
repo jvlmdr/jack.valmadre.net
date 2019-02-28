@@ -31,7 +31,7 @@ $$ L(x, \alpha) = f(x) + \alpha (h(x) - \tau) $$
 
 The dual function is obtained by the unconstrained minimization
 
-$$ g(\alpha) = \min_{x} L(x, \alpha) = \min_{x} f(x) + \alpha (h(x) - \tau) $$
+$$ g(\alpha) = \min_{x} L(x, \alpha) = \min_{x} \{ f(x) + \alpha (h(x) - \tau) \} $$
 
 and the dual problem is
 
@@ -42,13 +42,13 @@ If the constrained problem possesses _strong duality_ (for example, by Slater's 
 
 $$ \begin{aligned}
 f(x^{\star}) & = g(\alpha^{\star}) \\
-& = \min_{x} f(x) + \alpha^{\star} (h(x) - \tau) \\
-f(x^{\star}) + \alpha^{\star} \tau & = \min_{x} f(x) + \alpha^{\star} h(x)
+& = \min_{x} \{ f(x) + \alpha^{\star} (h(x) - \tau) \} \\
+f(x^{\star}) + \alpha^{\star} \tau & = \min_{x} \{ f(x) + \alpha^{\star} h(x) \}
 \end{aligned} $$
 
 Now we know the _value_ of the minimum of the regularized problem with $\lambda = \alpha^{star}$.
 All that remains is to show that this minimum is obtained at $x = x^{\star}$, the minimizer of the constrained problem.
-This is evident from the fact that $\h(x^{\star}) = \tau$.
+This is evident from the fact that $h(x^{\star}) = \tau$.
 
 ## Alternative method
 
@@ -56,7 +56,7 @@ Instead of separating the two cases of active and inactive constraints at the st
 
 $$ \begin{aligned}
 f(x^{\star}) & = g(\alpha^{\star}) \\
-& = \min_{x} f(x) + \alpha^{\star} (h(x) - \tau) \\
+& = \min_{x} \{ f(x) + \alpha^{\star} (h(x) - \tau) \} \\
 & \le f(x^{\star}) + \underbrace{\underbrace{\alpha^{\star}}_{\ge 0} \underbrace{(h(x^{\star}) - \tau)}_{\le 0}}_{\le 0} \\
 & \le f(x^{\star})
 \end{aligned} $$
@@ -64,8 +64,8 @@ f(x^{\star}) & = g(\alpha^{\star}) \\
 This means that all inequalities in the chain hold with equality, and therefore
 
 $$ \begin{aligned}
-\min_{x} f(x) + \alpha^{\star} (h(x) - \tau) & = f(x^{\star}) \\
-\min_{x} f(x) + \alpha^{\star} h(x) & = f(x^{\star}) + \alpha^{\star} \tau
+\min_{x} \{ f(x) + \alpha^{\star} (h(x) - \tau) \} & = f(x^{\star}) \\
+\min_{x} \{ f(x) + \alpha^{\star} h(x) \} & = f(x^{\star}) + \alpha^{\star} \tau
 \end{aligned} $$
 
 This yields the complementary slackness condition
