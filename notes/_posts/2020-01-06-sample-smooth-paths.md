@@ -19,12 +19,17 @@ $$ \Lambda = I + \alpha \Lambda_{1} + \beta \Lambda_{2} $$
 where $\Lambda_1 = D_1^T D_1$ and $\Lambda_2 = D_2^T D_2$ and $D_{i}$ is a finite difference operator of order $i$.
 
 $$ D_1 = \frac{1}{2} \begin{bmatrix} -1 & 1 \\ & -1 & 1 \\ && \ddots & \ddots \\ &&& -1 & 1 \end{bmatrix} $$
+
 $$ D_2 = \frac{1}{4} \begin{bmatrix} -1 & 2 & -1 \\ & -1 & 2 & -1 \\ && \ddots & \ddots & \ddots \\ &&& -1 & 2 & -1 \end{bmatrix} $$
 
-The matrix $D_i$ has shape $(N - i) \times N$ and therefore the $N \times N$ matrix $\Lambda_{i}$ has rank $(N - i)$.
+Then finite difference matrix $D_i$ has shape $(N - i) \times N$.
 
-To sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we simply compute an eigendecomposition $V D V^T = \Lambda$ and then take $x = D^{-\frac{1}{2}} V^T \epsilon$ where $\epsilon$ is drawn from a unit normal distribution.
+To sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we need a matrix $A$ such that $A A^{T} = \Lambda^{-1}$.
+This can be obtained by computing an eigendecomposition $\Lambda = V D V^T$ and setting $A = V D^{-\frac{1}{2}}$.
+Then take $x = A \epsilon$ where $\epsilon$ is drawn from a unit normal distribution.
 
 ## Efficient technique
 
-Work in progress...
+However, the above approach requires us to compute a factorization of a large sparse matrix.
+This can be avoided if we are willing to instead consider sampling _periodic_ smooth paths.
+Since all the matrices become circulant, they can be diagonalized using the DFT.
