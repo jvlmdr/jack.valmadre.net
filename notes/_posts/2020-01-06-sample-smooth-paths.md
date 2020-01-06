@@ -11,7 +11,7 @@ To make the path smooth, we have a couple of options: (1) we could smooth the pa
 However, one problem with these approaches is that the paths might stray arbitrarily far from the origin.
 Here's a simple technique that I use to generate smooth paths that don't stray too far.
 
-Let's consider the problem of sampling a path of length $N$ in $D$ dimensions.
+Let's consider the problem of sampling a path of length $N$ in $K$ dimensions.
 The idea is simply to sample from a Gaussian distribution with precision matrix (inverse covariance matrix)
 
 $$ \Lambda = I + \alpha \Lambda_{1} + \beta \Lambda_{2} $$
@@ -42,3 +42,11 @@ $$ Y x & = y \star x $$
 $$ F Y x = F (y \star x) = (F y) \odot (F x) = \operatorname{diag}(F y) F x $$
 
 $$ Y x = F^{-1} \operatorname{diag}(F y) F x \qquad \forall x $$
+
+Here the $F$ matrix computes the DFT in the same way as the function `fft()` in numpy.
+
+Now we can diagonalize the precision matrix
+
+$$ F^{-1} \Lambda F = 1 + \alpha |F d_{1}|^2 + \beta |F d_{2}|^2 $$
+
+where $d_{1} = \frac{1}{2} (-1, 1, 0, \dots, 0)$ and $d_{2} = \frac{1}{4} (-1, 2, -1, 0, \dots, 0)$.
