@@ -37,7 +37,7 @@ Since all the matrices become circulant, they can be diagonalized using the DFT.
 For engineers, the diagonalization is hiding in the familiar convolution identity.
 Let $Y$ denote the matrix which corresponds to circular convolution with a signal $y$.
 
-$$ Y x & = y \star x $$
+$$ Y x = y \star x $$
 
 $$ F Y x = F (y \star x) = (F y) \odot (F x) = \operatorname{diag}(F y) F x $$
 
