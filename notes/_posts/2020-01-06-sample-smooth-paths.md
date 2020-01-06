@@ -26,10 +26,19 @@ Then finite difference matrix $D_i$ has shape $(N - i) \times N$.
 
 To sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we need a matrix $A$ such that $A A^{T} = \Lambda^{-1}$.
 This can be obtained by computing an eigendecomposition $\Lambda = V D V^T$ and setting $A = V D^{-\frac{1}{2}}$.
-Then take $x = A \epsilon$ where $\epsilon$ is drawn from a unit normal distribution.
+To obtain a path, we then take $x = A \epsilon$ where $\epsilon$ is drawn from a unit normal distribution.
 
 ## Efficient technique
 
 However, the above approach requires us to compute a factorization of a large sparse matrix.
 This can be avoided if we are willing to instead consider sampling _periodic_ smooth paths.
 Since all the matrices become circulant, they can be diagonalized using the DFT.
+
+For engineers, the diagonalization is hiding in the familiar convolution identity.
+Let $Y$ denote the matrix which corresponds to circular convolution with a signal $y$.
+
+$$ Y x & = y \star x $$
+
+$$ F Y x = F (y \star x) = (F y) \odot (F x) = \operatorname{diag}(F y) F x $$
+
+$$ Y x = F^{-1} \operatorname{diag}(F y) F x \qquad \forall x $$
