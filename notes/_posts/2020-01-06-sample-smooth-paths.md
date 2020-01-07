@@ -106,7 +106,7 @@ If $N$ is even, then the row $F_{N / 2, t} = \omega_{N}^{(N/2) t} = (-1)^{t}$ is
 If we can find a complex matrix $V$ such that $V^{\ast} = V^{-1}$ and $A = V U$ is real then we must have $A^{T} = A^{\ast} = A^{-1}$.
 This can be achieved using the $V$ matrix
 
-$$ V = \begin{matrix}
+$$ V = \begin{bmatrix}
 1 \\
 & \frac{1}{\sqrt{2}} &&&&&& \frac{1}{\sqrt{2}} \\
 && \frac{1}{\sqrt{2}} &&&& \frac{1}{\sqrt{2}} \\
