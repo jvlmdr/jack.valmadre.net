@@ -73,7 +73,9 @@ Incidentally, since $d_2 = d_1 \star d_1$, we see that $F d_{2} = (F d_{1})^2$ a
 
 Therefore, to sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we use the matrix
 
-$$ A = U^{\ast} \operatorname{diag}(1 + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2})^{-\frac{1}{2}} $$
+$$ A = U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}}) $$
+
+where $\lambda = 1 + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2}$.
 
 But wait, something seems wrong here.
 The precision matrix $\Lambda$ is symmetric positive definite and yet the eigenvectors in $U$ are complex?
@@ -106,11 +108,16 @@ This can be achieved using the $V$ matrix
 
 $$ V = \begin{matrix}
 1 \\
-& \frac1\sqrt{2} &&&&&& \frac1\sqrt{2} \\
-&& \frac1\sqrt{2} &&&& \frac1\sqrt{2} \\
-&&& \ddots && \ddots \\
-&&&& 1 \\
-&&& \ddots && \ddots \\
-&& -i \frac1\sqrt{2} &&&& i \frac1\sqrt{2} \\
-& -i \frac1\sqrt{2} &&&&&& i \frac1\sqrt{2}
+& \frac{1}{\sqrt{2}} &&&&&& \frac{1}{\sqrt{2}} \\
+&& \frac{1}{\sqrt{2}} &&&& \frac{1}{\sqrt{2}} \\
+&&& \ddots && \iddots \\
+&&&& (1) \\
+&&& \iddots && \ddots \\
+&& -i \frac{1}{\sqrt{2}} &&&& i \frac{1}{\sqrt{2}} \\
+& -i \frac{1}{\sqrt{2}} &&&&&& i \frac{1}{\sqrt{2}}
 \end{bmatrix} $$
+
+We can confirm that $A = V U$ satisfies $A^{T} = A^{-1}$.
+In fact, since the DFT matrix is symmetric $F = F^{T}$ (note, _not_ conjugate transpose)
+
+Finally, we have our real $A = U^{\ast} V^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
