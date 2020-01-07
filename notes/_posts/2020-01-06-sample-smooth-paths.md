@@ -80,3 +80,37 @@ The precision matrix $\Lambda$ is symmetric positive definite and yet the eigenv
 What has happened here is that some eigenvalues occur twice and therefore the eigenvectors are not unique: we can take any (complex) rotation of the eigenvectors with the same eigenvalue and they are still eigenvectors.
 Recall that the Fourier transform of a real-valued signal has conjugate symmetry $X[k] = X^{\ast}[-k]$.
 Therefore $F d_{1}$ will have conjugate symmetry and $\lvert F d_{1} \rvert$ will have real symmetry.
+
+Recall that element $s, t$ of the DFT matrix $F$ is $F_{s, t} = \omega_{N}^{s t}$ where $\omega_{N} = \exp(i 2 \pi / N)$.
+Note that $\omega_{N}^{n} = \omega_{N}^{n \bmod N}$.
+Therefore we can observe the row symmetry
+
+$$ \left\{ \begin{aligned}
+F_{s, t} & = \omega_{N}^{s t} \\
+F_{N - s, t} & = \omega_{N}^{-s t}
+\end{aligned} \right. $$
+
+From here, we might have the idea of making the unitary matrix real by combining rows $s$ and $N - s$ according to
+
+$$ \left\{ \begin{aligned}
+\omega_{N}^{s t} + \omega_{N}^{-s t} & = 2 \operatorname{Re}(\omega_{N}^{s t}) \\
+\omega_{N}^{s t} - \omega_{N}^{-s t} & = 2 i \operatorname{Im}(\omega_{N}^{s t})
+\end{aligned} \right. $$
+
+There are two special cases.
+When $s = 0$, the row $F_{0, t} = \omega_{N}^0 = 1$ is real.
+If $N$ is even, then the row $F_{N / 2, t} = \omega_{N}^{(N/2) t} = (-1)^{t}$ is real.
+
+If we can find a complex matrix $V$ such that $V^{\ast} = V^{-1}$ and $A = V U$ is real then we must have $A^{T} = A^{\ast} = A^{-1}$.
+This can be achieved using the $V$ matrix
+
+$$ V = \begin{matrix}
+1 \\
+& \frac1\sqrt{2} &&&&&& \frac1\sqrt{2} \\
+&& \frac1\sqrt{2} &&&& \frac1\sqrt{2} \\
+&&& \ddots && \ddots \\
+&&&& 1 \\
+&&& \ddots && \ddots \\
+&& -i \frac1\sqrt{2} &&&& i \frac1\sqrt{2} \\
+& -i \frac1\sqrt{2} &&&&&& i \frac1\sqrt{2}
+\end{bmatrix} $$
