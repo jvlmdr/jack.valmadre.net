@@ -106,7 +106,24 @@ When $s = 0$, the row $F_{0, t} = \omega_{N}^0 = 1$ is real.
 If $N$ is even, then the row $F_{N / 2, t} = \omega_{N}^{(N/2) t} = (-1)^{t}$ is real.
 
 If we can find a complex matrix $V$ such that $V^{\ast} = V^{-1}$ and $A = V U$ is real then we must have $A^{T} = A^{\ast} = A^{-1}$.
-This can be achieved using the $V$ matrix
+
+To make $V U$ real, we can try using a matrix $V$ of the form
+
+$$ V = \begin{bmatrix}
+1 \\
+& \alpha &&&&&& \alpha \\
+&& \alpha &&&& \alpha \\
+&&& \ddots && \ddots \\
+&&&& (1) \\
+&&& \ddots && \ddots \\
+&& -i \beta &&&& i \beta \\
+& -i \beta &&&&&& i \beta
+\end{bmatrix} $$
+
+where $\alpha, \beta \in \mathbb{R}$.
+This would extract the real and imaginary parts of the rows of the DFT matrix.
+Now the question is: do there exist $\alpha$ and $\beta$ that satisfy $V^{\ast} V = V V^{\ast} = I$?
+Indeed, this can be achieved by choosing $\alpha = \beta = \frac{1}{\sqrt{2}}$.
 
 $$ V = \begin{bmatrix}
 1 \\
@@ -119,9 +136,7 @@ $$ V = \begin{bmatrix}
 & -i \frac{1}{\sqrt{2}} &&&&&& i \frac{1}{\sqrt{2}}
 \end{bmatrix} $$
 
-It can be confirmed that this matrix satisfies $V^{\ast} V = V V^{\ast} = I$ and that $V U$ is real.
-
 Finally, we have our real $A = U^{\ast} V^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
 
 Note that since the DFT matrix $F$ is (non-conjugate) symmetric $F = F^{T}$, we can equivalently apply the matrix $V$ to the colummns $U V^{T}$.
-In this case, our matrix is $A = \bar{V} U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
+In this case, the matrix would instead be $A = \bar{V} U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
