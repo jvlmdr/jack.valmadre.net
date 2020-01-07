@@ -79,9 +79,11 @@ where $\lambda = 1 + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rv
 
 But wait, something seems wrong here.
 The precision matrix $\Lambda$ is symmetric positive definite and yet the eigenvectors in $U$ are complex?
-What has happened here is that some eigenvalues occur twice and therefore the eigenvectors are not unique: we can take any (complex) rotation of the eigenvectors with the same eigenvalue and they are still eigenvectors.
+What has happened here is that some eigenvalues occur twice and therefore the eigenvectors are not unique: we can take any (complex) rotation of two eigenvectors with the same eigenvalue and they are still eigenvectors with unit norm.
+
 Recall that the Fourier transform of a real-valued signal has conjugate symmetry $X[k] = X^{\ast}[-k]$.
 Therefore $F d_{1}$ will have conjugate symmetry and $\lvert F d_{1} \rvert$ will have real symmetry.
+This suggests that we should look at eigenvector pairs $(k, N - k)$.
 
 Recall that element $s, t$ of the DFT matrix $F$ is $F_{s, t} = \omega_{N}^{s t}$ where $\omega_{N} = \exp(i 2 \pi / N)$.
 Note that $\omega_{N}^{n} = \omega_{N}^{n \bmod N}$.
