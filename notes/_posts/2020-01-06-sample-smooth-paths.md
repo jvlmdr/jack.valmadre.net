@@ -30,9 +30,9 @@ To obtain a path, we then take $x = A \epsilon$ where $\epsilon$ is drawn from a
 
 ## Efficient technique
 
-However, the above approach requires us to compute a factorization of a large sparse matrix.
+However, the above approach requires us to compute a factorization of a large (admittedly sparse) matrix.
 This can be avoided if we are willing to instead consider sampling _periodic_ smooth paths.
-Since all the matrices become circulant, they can be diagonalized using the DFT.
+Since all the matrices become circulant (and square), they can be diagonalized using the DFT.
 
 For engineers like me, the diagonalization is hiding in the familiar convolution identity.
 Let $Y$ denote the matrix which corresponds to circular convolution with a signal $y$.
@@ -46,9 +46,20 @@ $$ Y x = F^{-1} \operatorname{diag}(F y) F x \qquad \forall x $$
 $$ Y = F^{-1} \operatorname{diag}(F y) F $$
 
 Here the $F$ matrix computes the DFT in the same way as the function `fft()` in numpy.
+Note that this matrix is not unitary but instead satisfies
 
-Now we can diagonalize the precision matrix
+$$ F^{-1} = \frac{1}{N} F^{\ast} $$
 
-$$ F^{-1} \Lambda F = \operatorname{diag}(1 + \alpha |F d_{1}|^2 + \beta |F d_{2}|^2) $$
+For convenience, let us define $U = \frac{1}{\sqrt{N}} F$ so that $U^{-1} = U^{\ast}$ and
 
-where $d_{1} = (-1, 1, 0, \dots, 0)$ and $d_{2} = (-1, 2, -1, 0, \dots, 0) = d_1 \star d_1$.
+$$ Y = (\sqrt{N} U)^{-1} \operatorname{diag}(F y) (\sqrt{N} U) = U^{\ast} \operatorname{diag}(F y) U $$
+
+Now we can use this to diagonalize the finite difference matrix:
+
+$$ D_{1} = U^{\ast} \operatorname{diag}(F d_{1}) U $$
+
+where $d_{1} = (-1, 1, 0, \dots, 0)$.
+
+The Gram matrix becomes
+
+$$ D_{1}^{\ast} D_{1} = U^{\ast} \operatorname{diag}(F d_{1})^{\ast} U U^{\ast} \operatorname{diag}(F d_{1}) U = U^{\ast} \operatorname{diag}(|F d_{1}|^{2}) U $$
