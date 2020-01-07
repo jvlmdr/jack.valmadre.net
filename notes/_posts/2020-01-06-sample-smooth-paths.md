@@ -28,7 +28,7 @@ To sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we need a matrix
 This can be obtained by computing an eigendecomposition $\Lambda = V D V^T$ and setting $A = V D^{-\frac{1}{2}}$.
 To obtain a path, we then take $x = A \epsilon$ where $\epsilon$ is drawn from a unit normal distribution.
 
-## Efficient technique
+### Efficient technique
 
 However, the above approach requires us to compute a factorization of a large (admittedly sparse) matrix.
 This can be avoided if we are willing to instead consider sampling _periodic_ smooth paths.
@@ -57,6 +57,8 @@ For convenience, let us define $U = \frac{1}{\sqrt{N}} F$ so that $U^{-1} = U^{\
 
 $$ Y = (\sqrt{N} U)^{-1} \operatorname{diag}(F y) (\sqrt{N} U) = U^{\ast} \operatorname{diag}(F y) U $$
 
+This means that the matrix $U^{\star} = 1/\sqrt{N} F^
+
 Now we can use this to diagonalize the finite difference matrix:
 
 $$ D_{1} = U^{\ast} \operatorname{diag}(F d_{1}) U $$
@@ -78,74 +80,71 @@ $$ A = U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}}) $$
 where $\lambda = 1 + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2}$.
 
 But wait, something seems wrong here.
-The precision matrix $\Lambda$ is symmetric positive definite and yet the eigenvectors in $U$ are complex?
-What has happened here is that some eigenvalues occur twice and therefore the eigenvectors are not unique: we can take any (complex) rotation of two eigenvectors with the same eigenvalue and they are still eigenvectors with unit norm.
+The precision matrix $\Lambda$ is symmetric positive-definite and yet the eigenvectors in $U$ are complex?
+In order to obtain samples $x = A \epsilon$, we need a _real_ factorization $\Sigma = A A^{T}$.
 
-Recall that the Fourier transform of a real-valued signal has conjugate symmetry $X[k] = X^{\ast}[-k]$.
-Therefore $F d_{1}$ will have conjugate symmetry and $\lvert F d_{1} \rvert$ will have real symmetry.
-This suggests that we should look at eigenvector pairs $(k, N - k)$.
+### Real diagonalization
 
-Recall that element $s, t$ of the DFT matrix $F$ is $F_{s, t} = \omega_{N}^{s t}$ where $\omega_{N} = \exp(i 2 \pi / N)$.
-Note that $\omega_{N}^{n} = \omega_{N}^{n \bmod N}$.
-Therefore we can observe the row symmetry
+What's happened here is that some eigenvalues occur twice and therefore the eigenvectors are not unique: we can take any (complex) rotation of two eigenvectors with the same eigenvalue and they are still unit-norm eigenvectors of the same matrix.
+It should be possible to mix these eigenvectors in a way that makes them real.
+
+Let's seek a complex matrix $Q$ that is unitary $Q^{\ast} = Q^{-1}$ and such that $V = U Q$ is real.
+This would ensure that $V^{T} = V^{\ast} = V^{-1} $ since the product of two unitary matrices is a unitary matrix.
+Then we would have a real diagonalization of the precision matrix
+
+$$ \Lambda = (U Q)^{\ast} \operatorname{diag}(\lambda) U Q = V^{T} \operatorname{diag}(\lambda) V $$
+
+Recall that the Fourier transform of a real-valued signal has _conjugate_ symmetry.
+We can immediately observe that the signal $\lambda$ possesses _real_ symmetry $\lambda[k] = \lambda[N - k]$ since it is obtained from the magnitude of a signal with conjugate symmetry.
+
+Recall the definition of the DFT matrix $F$ (which is related to the unitary matrix $U$ by a scalar).
+Element $s, t$ of the DFT matrix is $F_{s, t} = \omega_{N}^{s t}$ where $\omega_{N} = \exp(i 2 \pi / N)$.
+The product $F Q$ will be a new matrix whose columns are linear combinations of the columns of $F$.
+Using the fact that $\omega_{N}^{n} = \omega_{N}^{n \bmod N}$ we can observe conjugate symmetry in the columns of $F$:
 
 $$ \left\{ \begin{aligned}
 F_{s, t} & = \omega_{N}^{s t} \\
-F_{N - s, t} & = \omega_{N}^{(N - s) t} = \omega_{N}^{-s t}
+F_{s, N - t} & = \omega_{N}^{s (N - t)} = \omega_{N}^{-s t}
 \end{aligned} \right. $$
 
-From here, we might have the idea of making the unitary matrix real by combining rows $s$ and $N - s$ according to
+From here, it seems natural to try and obtain a real version of the DFT matrix by combining the column pairs.
 
 $$ \left\{ \begin{aligned}
 \omega_{N}^{s t} + \omega_{N}^{-s t} & = 2 \operatorname{Re}(\omega_{N}^{s t}) \\
 \omega_{N}^{s t} - \omega_{N}^{-s t} & = 2 i \operatorname{Im}(\omega_{N}^{s t})
 \end{aligned} \right. $$
 
-There are two special cases.
-When $s = 0$, the row $F_{0, t} = \omega_{N}^0 = 1$ is real.
-If $N$ is even, then the row $F_{N / 2, t} = \omega_{N}^{(N/2) t} = (-1)^{t}$ is real.
+Note that there are two special cases.
+When $t = 0$, the entire column $F_{s, 0} = \omega_{N}^0 = 1$, which is already real.
+If $N$ is even, then the column $F_{s, N / 2} = \omega_{N}^{(N/2) s} = (-1)^{s}$, which is also already real.
 
-If we can find a complex matrix $V$ such that $V^{\ast} = V^{-1}$ and $A = V U$ is real then we must have $A^{T} = A^{\ast} = A^{-1}$.
+To make $F Q$ real, we therefore try using a matrix $Q$ of the form
 
-To make $V U$ real, we can try using a matrix $V$ of the form
-
-$$ V = \begin{bmatrix}
+$$ Q = \begin{bmatrix}
 1 \\
-& \alpha &&&&&& \alpha \\
-&& \alpha &&&& \alpha \\
+& \alpha &&&&&& -i \beta \\
+&& \alpha &&&& -i \beta \\
 &&& \ddots && \ddots \\
 &&&& (1) \\
 &&& \ddots && \ddots \\
-&& -i \beta &&&& i \beta \\
-& -i \beta &&&&&& i \beta
+&& \alpha &&&& i \beta \\
+& \alpha &&&&&& i \beta
 \end{bmatrix} $$
 
-where $\alpha, \beta \in \mathbb{R}$.
-This would extract the real and imaginary parts of the rows of the DFT matrix.
-Now the question is: do there exist $\alpha$ and $\beta$ that satisfy $V^{\ast} V = V V^{\ast} = I$?
-Indeed, this can be achieved by choosing $\alpha = \beta = \frac{1}{\sqrt{2}}$.
+with $\alpha, \beta \in \mathbb{R}$.
+This will separate the real and imaginary components of the columns of the DFT matrix.
+Now the question is: do there exist $\alpha$ and $\beta$ that satisfy $Q^{\ast} Q = Q Q^{\ast} = I$?
+Indeed, this can be achieved with simply $\alpha = \beta = \frac{1}{\sqrt{2}}$.
 
-$$ V = \begin{bmatrix}
+$$ Q = \begin{bmatrix}
 1 \\
-& \frac{1}{\sqrt{2}} &&&&&& \frac{1}{\sqrt{2}} \\
-&& \frac{1}{\sqrt{2}} &&&& \frac{1}{\sqrt{2}} \\
+& \frac{1}{\sqrt{2}} &&&&&& -i \frac{1}{\sqrt{2}} \\
+&& \frac{1}{\sqrt{2}} &&&& -i \frac{1}{\sqrt{2}} \\
 &&& \ddots && \ddots \\
 &&&& (1) \\
 &&& \ddots && \ddots \\
-&& -i \frac{1}{\sqrt{2}} &&&& i \frac{1}{\sqrt{2}} \\
-& -i \frac{1}{\sqrt{2}} &&&&&& i \frac{1}{\sqrt{2}}
+&& \frac{1}{\sqrt{2}} &&&& i \frac{1}{\sqrt{2}} \\
+& \frac{1}{\sqrt{2}} &&&&&& i \frac{1}{\sqrt{2}}
 \end{bmatrix} $$
 
-Note that, when a periodic signal $\hat{x}$ has conjugate symmetry,
-
-$$ (V \hat{x})[k] = \begin{cases}
-\hat{x}[k] & k = 0 \\
-\sqrt{2} \operatorname{Re}(\hat{x}[k]) = \frac{1}{\sqrt{2}} (\hat{x}[k] + \hat{x}[N - k]) & 0 < k < N / 2 \\
-\hat{x}[k] & k = N / 2 \\
-\sqrt{2} \operatorname{Im}(\hat{x}[k]) = -i \frac{1}{\sqrt{2}} (\hat{x}[k] - \hat{x}[N - k]) & N / 2 < k
-\end{cases} $$
-
-Finally, we have our real $A = U^{\ast} V^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
-
-Note that since the DFT matrix $F$ is (non-conjugate) symmetric $F = F^{T}$, we can equivalently apply the matrix $V$ to the colummns $U V^{T}$.
-In this case, the matrix would instead be $A = \bar{V} U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
+Finally, we have our real $A = Q^{\ast} U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
