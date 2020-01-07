@@ -116,7 +116,7 @@ $$ \left\{ \begin{aligned}
 
 Note that there are two special cases.
 When $t = 0$, the entire column $F_{s, 0} = \omega_{N}^0 = 1$, which is already real.
-If $N$ is even, then the column $F_{s, N / 2} = \omega_{N}^{(N/2) s} = (-1)^{s}$, which is also already real.
+If $N$ is even, then the column $F_{s, N / 2} = \omega_{N}^{s (N/2)} = (-1)^{s}$, which is also already real.
 
 To make $F Q$ real, we therefore try using a matrix $Q$ of the form
 
@@ -148,3 +148,21 @@ $$ Q = \begin{bmatrix}
 \end{bmatrix} $$
 
 Finally, we have our real $A = Q^{\ast} U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
+
+Note that the operation $Q^{\ast}$ can be implemented as follows
+
+$$ (Q^{\ast} h)[k] = \begin{cases}
+h[k], & k = 0 \\
+\frac{1}{\sqrt{2}} (h[k] + h[N - k]), & 0 < k < N / 2 \\
+h[k], & k = N / 2 \\
+i \frac{1}{\sqrt{2}} (h[k] - h[N - k]), & N / 2 < k
+\end{cases} $$
+
+and when $h$ has conjugate symmetry, this is equivalent to
+
+$$ (Q^{\ast} h)[k] = \begin{cases}
+h[k], & k = 0 \\
+\sqrt{2} \operatorname{Re}(h[k]), & 0 < k < N / 2 \\
+h[k], & k = N / 2 \\
+-\sqrt{2} \operatorname{Im}(h[k]), & N / 2 < k
+\end{cases} $$
