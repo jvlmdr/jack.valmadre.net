@@ -49,6 +49,6 @@ Here the $F$ matrix computes the DFT in the same way as the function `fft()` in 
 
 Now we can diagonalize the precision matrix
 
-$$ F^{-1} \Lambda F = 1 + \alpha |F d_{1}|^2 + \beta |F d_{2}|^2 $$
+$$ F^{-1} \Lambda F = \operatorname{diag}(1 + \alpha |F d_{1}|^2 + \beta |F d_{2}|^2) $$
 
 where $d_{1} = (-1, 1, 0, \dots, 0)$ and $d_{2} = (-1, 2, -1, 0, \dots, 0) = d_1 \star d_1$.
