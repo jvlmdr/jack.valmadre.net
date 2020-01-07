@@ -63,14 +63,14 @@ $$ D_{1} = U^{\ast} \operatorname{diag}(F d_{1}) U $$
 
 where $d_{1} = (-1, 1, 0, \dots, 0)$. The Gram matrix becomes
 
-$$ D_{1}^{T} D_{1} = D_{1}^{\ast} D_{1} = U^{\ast} \operatorname{diag}(F d_{1})^{\ast} U U^{\ast} \operatorname{diag}(F d_{1}) U = U^{\ast} \operatorname{diag}(|F d_{1}|^{2}) U $$
+$$ D_{1}^{T} D_{1} = D_{1}^{\ast} D_{1} = U^{\ast} \operatorname{diag}(F d_{1})^{\ast} U U^{\ast} \operatorname{diag}(F d_{1}) U = U^{\ast} \operatorname{diag}(\lvert F d_{1} \rvert^{2}) U $$
 
 Finally, the entire precision matrix $\Lambda$ can therefore be diagonalized:
 
-$$ \Lambda = U^{\ast} \operatorname{diag}(1 + \alpha |F d_{1}|^{2} + \beta |F d_{2}|^{2}) U $$
+$$ \Lambda = U^{\ast} \operatorname{diag}(1 + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2}) U $$
 
-Incidentally, since $d_2 = d_1 \star d_1$, we see that $F d_{2} = (F d_{1})^2$ and therefore $|F d_{2}|^2 = |F d_{1}|^4$.
+Incidentally, since $d_2 = d_1 \star d_1$, we see that $F d_{2} = (F d_{1})^2$ and therefore $\lvert F d_{2} \rvert^2 = \lvert F d_{1} \rvert^4$.
 
 Therefore, to sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we use the matrix
 
-$$ A = U^{\ast} \operatorname{diag}(1 + \alpha |F d_{1}|^{2} + \beta |F d_{2}|^{2})^{-\frac{1}{2}} $$
+$$ A = U^{\ast} \operatorname{diag}(1 + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2})^{-\frac{1}{2}} $$
