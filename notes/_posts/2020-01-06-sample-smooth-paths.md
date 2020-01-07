@@ -110,9 +110,9 @@ $$ V = \begin{matrix}
 1 \\
 & \frac{1}{\sqrt{2}} &&&&&& \frac{1}{\sqrt{2}} \\
 && \frac{1}{\sqrt{2}} &&&& \frac{1}{\sqrt{2}} \\
-&&& \ddots && \iddots \\
+&&& \vdots && \ddots \\
 &&&& (1) \\
-&&& \iddots && \ddots \\
+&&& \ddots && \ddots \\
 && -i \frac{1}{\sqrt{2}} &&&& i \frac{1}{\sqrt{2}} \\
 & -i \frac{1}{\sqrt{2}} &&&&&& i \frac{1}{\sqrt{2}}
 \end{bmatrix} $$
