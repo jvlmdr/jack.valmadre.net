@@ -50,9 +50,10 @@ Note that this matrix is not unitary but instead satisfies
 
 $$ F^{-1} = \frac{1}{N} F^{\ast} $$
 
-For convenience, let us define $U = \frac{1}{\sqrt{N}} F$ so that $U^{-1} = U^{\ast}$ and
+For convenience, let us define $U = \frac{1}{\sqrt{N}} F$ so that $U^{-1} = U^{\ast}$ and the diagonalization can be expressed:
 
-$$ Y = (\sqrt{N} U)^{-1} \operatorname{diag}(F y) (\sqrt{N} U) = U^{\ast} \operatorname{diag}(F y) U $$
+$$ \begin{align} Y & = (\sqrt{N} U)^{-1} \operatorname{diag}(F y) (\sqrt{N} U) \\
+& = U^{\ast} \operatorname{diag}(F y) U \end{align} $$
 
 Now we can use this to diagonalize the finite difference matrix:
 
