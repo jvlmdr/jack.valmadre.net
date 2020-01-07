@@ -18,9 +18,9 @@ $$ \Lambda = I + \alpha \Lambda_{1} + \beta \Lambda_{2} $$
 
 where $\Lambda_1 = D_1^T D_1$ and $\Lambda_2 = D_2^T D_2$ and $D_{i}$ is a finite difference operator of order $i$.
 
-$$ D_1 = \frac{1}{2} \begin{bmatrix} -1 & 1 \\ & -1 & 1 \\ && \ddots & \ddots \\ &&& -1 & 1 \end{bmatrix} $$
+$$ D_1 = \begin{bmatrix} -1 & 1 \\ & -1 & 1 \\ && \ddots & \ddots \\ &&& -1 & 1 \end{bmatrix} $$
 
-$$ D_2 = \frac{1}{4} \begin{bmatrix} -1 & 2 & -1 \\ & -1 & 2 & -1 \\ && \ddots & \ddots & \ddots \\ &&& -1 & 2 & -1 \end{bmatrix} $$
+$$ D_2 = \begin{bmatrix} -1 & 2 & -1 \\ & -1 & 2 & -1 \\ && \ddots & \ddots & \ddots \\ &&& -1 & 2 & -1 \end{bmatrix} $$
 
 Then finite difference matrix $D_i$ has shape $(N - i) \times N$.
 
@@ -49,4 +49,4 @@ Now we can diagonalize the precision matrix
 
 $$ F^{-1} \Lambda F = 1 + \alpha |F d_{1}|^2 + \beta |F d_{2}|^2 $$
 
-where $d_{1} = \frac{1}{2} (-1, 1, 0, \dots, 0)$ and $d_{2} = \frac{1}{4} (-1, 2, -1, 0, \dots, 0)$.
+where $d_{1} = (-1, 1, 0, \dots, 0)$ and $d_{2} = (-1, 2, -1, 0, \dots, 0)$.
