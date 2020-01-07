@@ -74,3 +74,6 @@ Incidentally, since $d_2 = d_1 \star d_1$, we see that $F d_{2} = (F d_{1})^2$ a
 Therefore, to sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we use the matrix
 
 $$ A = U^{\ast} \operatorname{diag}(1 + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2})^{-\frac{1}{2}} $$
+
+But wait, something seems wrong here.
+The precision matrix $\Lambda$ is symmetric positive definite and yet the eigenvectors in $U$ are complex?
