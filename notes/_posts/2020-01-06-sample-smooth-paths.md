@@ -7,7 +7,7 @@ math:   true
 
 Sometimes it's useful to generate random smooth paths that hang around the origin.
 The simplest way to obtain a random path is to generate a random walk where each step is independent and normally distributed.
-To make the path smooth, we have a couple of options: (1) we could smooth the path with a low-pass filter, or (2) we could integrate the random walk again such that the second derivative is normally distributed rather than the velocity.
+To make the path smooth, we have a couple of options: (1) we could smooth the path with a low-pass filter, or (2) we could integrate the random walk again such that the second derivative is normally distributed rather than the first derivative.
 However, one problem with these approaches is that the paths might stray arbitrarily far from the origin.
 Here's a simple technique that I use to generate smooth paths that don't stray too far.
 
@@ -32,9 +32,12 @@ To obtain a path, we then take $x = A \epsilon$ where $\epsilon$ is drawn from a
 
 However, the above approach requires us to compute a factorization of a large (admittedly sparse) matrix.
 This can be avoided if we are willing to instead consider sampling _periodic_ smooth paths.
-Since all the matrices become circulant (and square), they can be diagonalized using the DFT.
+If we assume the paths to be periodic, then the finite difference matrices will be square and circulant.
 
-For engineers like me, the diagonalization is hiding in the familiar convolution identity.
+$$ D_1 = \begin{bmatrix} -1 & 1 \\ & -1 & 1 \\ && \ddots & \ddots \\ &&& -1 & 1 \\ 1 &&&& -1 \end{bmatrix} $$
+
+Circulant matrices can be diagonalized using the Discrete Fourier Transform.
+For engineers like me, this diagonalization is hiding in the familiar convolution identity.
 Let $Y$ denote the matrix which corresponds to circular convolution with a signal $y$.
 
 $$ Y x = y \star x $$
