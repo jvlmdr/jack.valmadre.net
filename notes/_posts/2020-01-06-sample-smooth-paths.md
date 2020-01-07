@@ -110,7 +110,7 @@ $$ V = \begin{bmatrix}
 1 \\
 & \frac{1}{\sqrt{2}} &&&&&& \frac{1}{\sqrt{2}} \\
 && \frac{1}{\sqrt{2}} &&&& \frac{1}{\sqrt{2}} \\
-&&& \vdots && \ddots \\
+&&& \ddots && \ddots \\
 &&&& (1) \\
 &&& \ddots && \ddots \\
 && -i \frac{1}{\sqrt{2}} &&&& i \frac{1}{\sqrt{2}} \\
