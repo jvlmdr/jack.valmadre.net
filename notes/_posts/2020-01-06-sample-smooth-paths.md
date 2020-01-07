@@ -59,8 +59,6 @@ Now we can use this to diagonalize the finite difference matrix:
 
 $$ D_{1} = U^{\ast} \operatorname{diag}(F d_{1}) U $$
 
-where $d_{1} = (-1, 1, 0, \dots, 0)$.
-
-The Gram matrix becomes
+where $d_{1} = (-1, 1, 0, \dots, 0)$. The Gram matrix becomes
 
 $$ D_{1}^{T} D_{1} = D_{1}^{\ast} D_{1} = U^{\ast} \operatorname{diag}(F d_{1})^{\ast} U U^{\ast} \operatorname{diag}(F d_{1}) U = U^{\ast} \operatorname{diag}(|F d_{1}|^{2}) U $$
