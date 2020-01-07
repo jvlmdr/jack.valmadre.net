@@ -115,14 +115,14 @@ then we see that
 $$ \begin{align}
 Q_{k} \begin{bmatrix} U_{k} \\ U_{N - k} \end{bmatrix}
 & = \begin{bmatrix} \alpha & \alpha \\ -i \beta & i \beta \end{bmatrix} \begin{bmatrix} U_{k} \\ U_{N - k} \end{bmatrix} \\
-& = \begin{bmatrix} \alpha 2 \Re\{U_{k}\} \\ \beta 2 \Im\{U_{k}\}
+& = \begin{bmatrix} \alpha 2 \Re\{U_{k}\} \\ \beta 2 \Im\{U_{k}\} \end{bmatrix}
 \end{align} $$
 
 which is real.
 To preserve orthogonality, we choose $\alpha = \beta = \frac{1}{\sqrt{2}}$.
 This will have no effect on the eigenvalues since
 
-$$ Q_{k}^{\ast} (\lambda[k] I_{2}) Q_{k} = \lambda I $$
+$$ Q_{k}^{\ast} (\lambda_k I_{2}) Q_{k} = \lambda_k I $$
 
 Overall our $Q$ matrix takes the form
 
@@ -138,12 +138,24 @@ $$ Q = \begin{bmatrix}
 \end{bmatrix} $$
 
 Finally, we have our real $A = U^{\ast} Q^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
+Since $U^{\ast} = \frac{1}{\sqrt{N}} F^{\ast} = \sqrt{N} F^{-1}$, samples can be obtained
+
+$$ \sqrt{N} \operatorname{IFFT}(Q^{\ast}(\lambda^{-\frac{1}{2}} \otimes \epsilon)) $$
 
 Note that the operation $Q^{\ast}$ can be implemented as follows
 
 $$ (Q^{\ast} h)[k] = \begin{cases}
 h[k], & k = 0 \\
 \frac{1}{\sqrt{2}} (h[k] + i h[N - k]), & 0 < k < N / 2 \\
+h[k], & k = N / 2 \\
+\frac{1}{\sqrt{2}} (h[k] - i h[N - k]), & N / 2 < k
+\end{cases} $$
+
+When $h$ has conjugate symmetry, this is equivalent to
+
+$$ (Q^{\ast} h)[k] = \begin{cases}
+h[k], & k = 0 \\
+\frac{1}{\sqrt{2}} (h[k] + i h[k]*), & 0 < k < N / 2 \\
 h[k], & k = N / 2 \\
 \frac{1}{\sqrt{2}} (h[k] - i h[N - k]), & N / 2 < k
 \end{cases} $$
