@@ -78,7 +78,7 @@ Therefore, to sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we us
 
 $$ A = U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}}) $$
 
-where $\lambda = 1 + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2}$.
+where $\lambda = \lvert F \delta \rvert^{2} + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2}$.
 
 But wait, something seems wrong here.
 The precision matrix $\Lambda$ is symmetric positive-definite and yet the eigenvectors in $U$ are complex?
@@ -108,7 +108,7 @@ Let $U_{k}$ denote row $k$ of the matrix $U$.
 Let $Q_{k}$ denote the submatrix of elements $\{k, N - k\} \times \{k, N - k\}$ of the matrix $Q$.
 If we let $Q_{k}$ take the form
 
-$$ \begin{bmatrix} \alpha & \alpha \\ -i \beta & i \beta \end{bmatrix} $$
+$$ Q_{k} = \begin{bmatrix} \alpha & \alpha \\ -i \beta & i \beta \end{bmatrix} $$
 
 then we see that
 
@@ -151,11 +151,11 @@ h[k], & k = N / 2 \\
 \frac{1}{\sqrt{2}} (h[k] - i h[N - k]), & N / 2 < k
 \end{cases} $$
 
-When $h$ has conjugate symmetry, this is equivalent to
+When $h$ is real and symmetric (as above), this is equivalent to
 
 $$ (Q^{\ast} h)[k] = \begin{cases}
 h[k], & k = 0 \\
-\frac{1}{\sqrt{2}} (h[k] + i h[k]*), & 0 < k < N / 2 \\
+\frac{1}{\sqrt{2}} (1 + i) h[k], & 0 < k < N / 2 \\
 h[k], & k = N / 2 \\
-\frac{1}{\sqrt{2}} (h[k] - i h[N - k]), & N / 2 < k
+\frac{1}{\sqrt{2}} (1 - i) h[k], & N / 2 < k
 \end{cases} $$
