@@ -117,7 +117,9 @@ $$ V = \begin{bmatrix}
 & -i \frac{1}{\sqrt{2}} &&&&&& i \frac{1}{\sqrt{2}}
 \end{bmatrix} $$
 
-We can confirm that $A = V U$ satisfies $A^{T} = A^{-1}$.
-In fact, since the DFT matrix is symmetric $F = F^{T}$ (note, _not_ conjugate transpose)
+It can be confirmed that this matrix satisfies $V^{\ast} V = V V^{\ast} = I$ and that $V U$ is real.
 
 Finally, we have our real $A = U^{\ast} V^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
+
+Note that since the DFT matrix $F$ is (non-conjugate) symmetric $F = F^{T}$, we can equivalently apply the matrix $V$ to the colummns $U V^{T}$.
+In this case, our matrix is $A = \bar{V} U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
