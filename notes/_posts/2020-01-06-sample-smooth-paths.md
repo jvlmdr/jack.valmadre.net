@@ -136,13 +136,13 @@ $$ V = \begin{bmatrix}
 & -i \frac{1}{\sqrt{2}} &&&&&& i \frac{1}{\sqrt{2}}
 \end{bmatrix} $$
 
-Note that, when $\hat{x}$ has conjugate symmetry,
+Note that, when a periodic signal $\hat{x}$ has conjugate symmetry,
 
-$$ V \hat{x}[k] = \begin{cases}
+$$ (V \hat{x})[k] = \begin{cases}
 \hat{x}[k] & k = 0 \\
-\frac{1}{\sqrt{2}} (\hat{x}[k] + \hat{x}[N - k]) = \sqrt{2} \operatorname{Re}(\hat{x}[k]) & 0 < 2 k < N - 1 \\
+\sqrt{2} \operatorname{Re}(\hat{x}[k]) = \frac{1}{\sqrt{2}} (\hat{x}[k] + \hat{x}[N - k]) & 0 < 2 k < N - 1 \\
 \hat{x}[k] & 2 k = N - 1 \\
--i \frac{1}{\sqrt{2}} (\hat{x}[k] - \hat{x}[N - k]) = \sqrt{2} \operatorname{Im}(\hat{x}[k]) & N - 1 < 2 k
+\sqrt{2} \operatorname{Im}(\hat{x}[k]) = -i \frac{1}{\sqrt{2}} (\hat{x}[k] - \hat{x}[N - k]) & N - 1 < 2 k
 \end{cases} $$
 
 Finally, we have our real $A = U^{\ast} V^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
