@@ -77,3 +77,4 @@ $$ A = U^{\ast} \operatorname{diag}(1 + \alpha \lvert F d_{1} \rvert^{2} + \beta
 
 But wait, something seems wrong here.
 The precision matrix $\Lambda$ is symmetric positive definite and yet the eigenvectors in $U$ are complex?
+What has happened here is that some eigenvalues occur twice and therefore the eigenvectors are not unique: we can take any (complex) rotation of the eigenvectors with the same eigenvalue and they are still eigenvectors.
