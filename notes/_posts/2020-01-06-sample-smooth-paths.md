@@ -89,7 +89,7 @@ Therefore we can observe the row symmetry
 
 $$ \left\{ \begin{aligned}
 F_{s, t} & = \omega_{N}^{s t} \\
-F_{N - s, t} & = \omega_{N}^{-s t}
+F_{N - s, t} & = \omega_{N}^{(N - s) t} = \omega_{N}^{-s t}
 \end{aligned} \right. $$
 
 From here, we might have the idea of making the unitary matrix real by combining rows $s$ and $N - s$ according to
