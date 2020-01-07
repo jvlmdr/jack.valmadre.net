@@ -140,9 +140,9 @@ Note that, when a periodic signal $\hat{x}$ has conjugate symmetry,
 
 $$ (V \hat{x})[k] = \begin{cases}
 \hat{x}[k] & k = 0 \\
-\sqrt{2} \operatorname{Re}(\hat{x}[k]) = \frac{1}{\sqrt{2}} (\hat{x}[k] + \hat{x}[N - k]) & 0 < 2 k < N - 1 \\
-\hat{x}[k] & 2 k = N - 1 \\
-\sqrt{2} \operatorname{Im}(\hat{x}[k]) = -i \frac{1}{\sqrt{2}} (\hat{x}[k] - \hat{x}[N - k]) & N - 1 < 2 k
+\sqrt{2} \operatorname{Re}(\hat{x}[k]) = \frac{1}{\sqrt{2}} (\hat{x}[k] + \hat{x}[N - k]) & 0 < k < N / 2 \\
+\hat{x}[k] & k = N / 2 \\
+\sqrt{2} \operatorname{Im}(\hat{x}[k]) = -i \frac{1}{\sqrt{2}} (\hat{x}[k] - \hat{x}[N - k]) & N / 2 < k
 \end{cases} $$
 
 Finally, we have our real $A = U^{\ast} V^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
