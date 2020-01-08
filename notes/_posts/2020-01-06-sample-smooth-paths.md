@@ -114,7 +114,7 @@ then we see that
 
 $$ \begin{align}
 Q_{k} \begin{bmatrix} U_{k} \\ U_{N - k} \end{bmatrix}
-& = \begin{bmatrix} \alpha & \alpha \\ -i \beta & i \beta \end{bmatrix} \begin{bmatrix} U_{k} \\ U_{N - k} \end{bmatrix} \\
+& = \begin{bmatrix} \alpha & \alpha \\ -i \beta & i \beta \end{bmatrix} \begin{bmatrix} U_{k} \\ \bar{U}_{k} \end{bmatrix} \\
 & = \begin{bmatrix} \alpha 2 \operatorname{Re}\{U_{k}\} \\ \beta 2 \operatorname{Im}\{U_{k}\} \end{bmatrix}
 \end{align} $$
 
