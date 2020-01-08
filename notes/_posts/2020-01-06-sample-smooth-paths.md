@@ -140,7 +140,7 @@ $$ Q = \begin{bmatrix}
 Finally, we have our real $A = U^{\ast} Q^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
 Since $U^{\ast} = \frac{1}{\sqrt{N}} F^{\ast} = \sqrt{N} F^{-1}$, samples can be obtained
 
-$$ x = \sqrt{N} \cdot \operatorname{ifft}(Q^{\ast}(\lambda^{-\frac{1}{2}} \otimes \epsilon)) $$
+$$ x = \sqrt{N} \cdot \operatorname{ifft}(Q^{\ast}(\lambda^{-\frac{1}{2}} \circ \epsilon)) $$
 
 Note that the operation $Q^{\ast}$ can be implemented as follows
 
