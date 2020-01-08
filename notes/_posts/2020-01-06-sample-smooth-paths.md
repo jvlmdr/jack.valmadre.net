@@ -5,6 +5,8 @@ date:   2020-01-06
 math:   true
 ---
 
+[Jupyter notebook here](https://gist.github.com/jvlmdr/6fccd20c6647f0aa6f0756f2b4e76e97)
+
 Sometimes it's useful to generate random smooth paths that hang around the origin.
 The simplest way to obtain a random path is to generate a random walk where each step is independent and normally distributed.
 To make the path smooth, we have a couple of options: (1) we could smooth the path with a low-pass filter, or (2) we could integrate the random walk again such that the second derivative is normally distributed rather than the first derivative.
