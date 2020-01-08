@@ -122,7 +122,7 @@ which is real.
 To preserve orthogonality, we choose $\alpha = \beta = \frac{1}{\sqrt{2}}$.
 This will have no effect on the eigenvalues since
 
-$$ Q_{k}^{\ast} (\lambda_k I_{2}) Q_{k} = \lambda_k I $$
+$$ Q_{k}^{\ast} (\lambda_k I_{2}) Q_{k} = \lambda_k Q_{k}^{\ast} Q_{k} = \lambda_k I_2 $$
 
 Overall our $Q$ matrix takes the form
 
