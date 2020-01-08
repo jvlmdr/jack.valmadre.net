@@ -70,7 +70,8 @@ Finally, the entire precision matrix $\Lambda$ can therefore be diagonalized $\L
 
 $$ \lambda = \lvert F \delta \rvert^{2} + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2} $$
 
-(Incidentally, since $d_2 = d_1 \star d_1$, we see that $F d_{2} = (F d_{1})^2$ and therefore $\lvert F d_{2} \rvert^2 = \lvert F d_{1} \rvert^4$.)
+Note that $F \delta = 1$.
+Incidentally, since $d_2 = d_1 \star d_1$, we see that $F d_{2} = (F d_{1})^2$ and therefore $\lvert F d_{2} \rvert^2 = \lvert F d_{1} \rvert^4$.
 
 Therefore, to sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we use the matrix
 
