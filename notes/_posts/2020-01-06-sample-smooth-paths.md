@@ -73,7 +73,7 @@ $$ \lambda = \lvert F \delta \rvert^{2} + \alpha \lvert F d_{1} \rvert^{2} + \be
 Note that $F \delta = 1$.
 Incidentally, since $d_2 = d_1 \star d_1$, we see that $F d_{2} = (F d_{1})^2$ and therefore $\lvert F d_{2} \rvert^2 = \lvert F d_{1} \rvert^4$.
 
-Therefore, to sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we use the matrix
+Therefore, to sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, it seems that we could use the matrix
 
 $$ A = U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}}) $$
 
