@@ -160,3 +160,5 @@ h[k], & k = 0 \\
 h[k], & k = N / 2 \\
 \frac{1}{\sqrt{2}} (1 - i) h[k], & N / 2 < k
 \end{cases} $$
+
+Of course, if we want to generate non-periodic paths, we can generate a periodic path of a larger size and then truncate it.
