@@ -161,4 +161,14 @@ h[k], & k = N / 2 \\
 \frac{1}{\sqrt{2}} (1 - i) h[k], & N / 2 < k
 \end{cases} $$
 
+Here are a few smaples from this distribution.
+I often use $\alpha = 0$ and $\beta \in [10^3, 10^6]$.
+Note that, since the paths are constrained to be periodic, shorter paths may be tightly clustered.
+
+<img src="/notes/assets/2020-01-06-sample-smooth-paths/smooth-paths-1d.png"
+  class="img-responsive" style="margin: auto;" />
+
+<img src="/notes/assets/2020-01-06-sample-smooth-paths/smooth-paths-2d.png"
+  class="img-responsive" style="margin: auto;" />
+
 Of course, if we want to generate non-periodic paths, we can generate a periodic path of a larger size and then truncate it.
