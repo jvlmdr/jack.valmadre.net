@@ -58,8 +58,6 @@ For convenience, let us define $U = \frac{1}{\sqrt{N}} F$ so that $U^{-1} = U^{\
 
 $$ Y = (\sqrt{N} U)^{-1} \operatorname{diag}(F y) (\sqrt{N} U) = U^{\ast} \operatorname{diag}(F y) U $$
 
-This means that the matrix $U^{\star} = 1/\sqrt{N} F^
-
 Now we can use this to diagonalize the finite difference matrix:
 
 $$ D_{1} = U^{\ast} \operatorname{diag}(F d_{1}) U $$
@@ -68,17 +66,15 @@ where $d_{1} = (-1, 1, 0, \dots, 0)$. The Gram matrix becomes
 
 $$ D_{1}^{T} D_{1} = D_{1}^{\ast} D_{1} = U^{\ast} \operatorname{diag}(F d_{1})^{\ast} U U^{\ast} \operatorname{diag}(F d_{1}) U = U^{\ast} \operatorname{diag}(\lvert F d_{1} \rvert^{2}) U $$
 
-Finally, the entire precision matrix $\Lambda$ can therefore be diagonalized:
+Finally, the entire precision matrix $\Lambda$ can therefore be diagonalized $\Lambda = U^{\ast} \operatorname{diag}(\lambda) U$ where
 
-$$ \Lambda = U^{\ast} \operatorname{diag}(1 + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2}) U $$
+$$ \lambda = \lvert F \delta \rvert^{2} + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2} $$
 
-Incidentally, since $d_2 = d_1 \star d_1$, we see that $F d_{2} = (F d_{1})^2$ and therefore $\lvert F d_{2} \rvert^2 = \lvert F d_{1} \rvert^4$.
+(Incidentally, since $d_2 = d_1 \star d_1$, we see that $F d_{2} = (F d_{1})^2$ and therefore $\lvert F d_{2} \rvert^2 = \lvert F d_{1} \rvert^4$.)
 
 Therefore, to sample from the distribution $\mathcal{N}(0, \Lambda^{-1})$, we use the matrix
 
 $$ A = U^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}}) $$
-
-where $\lambda = \lvert F \delta \rvert^{2} + \alpha \lvert F d_{1} \rvert^{2} + \beta \lvert F d_{2} \rvert^{2}$.
 
 But wait, something seems wrong here.
 The precision matrix $\Lambda$ is symmetric positive-definite and yet the eigenvectors in $U$ are complex?
@@ -94,7 +90,7 @@ We can immediately observe that the transform $\lambda$ possesses _real_ symmetr
 Therefore the identical eigenvalues occur at $\lambda[k]$ and $\lambda[N - k]$.
 
 From the diagonalization $\Lambda = U^{\ast} \operatorname{diag}(\lambda) U$ we can see that the eigenvalues correspond to rows of $U$.
-The rows of $U$ possess conjugate symmetry.
+Happily, the rows of $U$ possess conjugate symmetry.
 Recall from the definition of the DFT matrix $F$ (which is related to the unitary matrix $U$ by a scalar) that element $s, t$ of the DFT matrix is $F_{s, t} = \omega_{N}^{s t}$ where $\omega_{N} = \exp(i 2 \pi / N)$.
 Using the fact that $\omega_{N}^{n} = \omega_{N}^{n \bmod N}$ we see the symmetry in the rows of $F$:
 
@@ -103,9 +99,13 @@ F_{s, t} & = \omega_{N}^{s t} \\
 F_{N - s, t} & = \omega_{N}^{(N - s) t} = \omega_{N}^{-s t} = \bar{F}_{s, t}
 \end{aligned} \right. $$
 
+There are two special cases.
+For $s = 0$, we have $F_{s, t} = \omega_{N}^{0} = 1$, which is already real.
+For $s = N / 2$ (only when $N$ is even), we have $F_{s, t} = \omega_{N}^{(N/2) t} = (-1)^{t}$, which is also already real.
+
 Therefore we propose to introduce an orthonormal complex matrix $Q$ such that $V = Q U$ is real and therefore $V^{T} = V^{\ast} = V^{-1}$.
 Let $U_{k}$ denote row $k$ of the matrix $U$.
-Let $Q_{k}$ denote the submatrix of elements $\{k, N - k\} \times \{k, N - k\}$ of the matrix $Q$.
+Let $Q_{k}$ denote the submatrix of elements $\\{k, N - k\\} \times \\{k, N - k\\}$ of the matrix $Q$.
 If we let $Q_{k}$ take the form
 
 $$ Q_{k} = \begin{bmatrix} \alpha & \alpha \\ -i \beta & i \beta \end{bmatrix} $$
@@ -115,7 +115,7 @@ then we see that
 $$ \begin{align}
 Q_{k} \begin{bmatrix} U_{k} \\ U_{N - k} \end{bmatrix}
 & = \begin{bmatrix} \alpha & \alpha \\ -i \beta & i \beta \end{bmatrix} \begin{bmatrix} U_{k} \\ U_{N - k} \end{bmatrix} \\
-& = \begin{bmatrix} \alpha 2 \Re\{U_{k}\} \\ \beta 2 \Im\{U_{k}\} \end{bmatrix}
+& = \begin{bmatrix} \alpha 2 \operatorname{Re}\{U_{k}\} \\ \beta 2 \operatorname{Im}\{U_{k}\} \end{bmatrix}
 \end{align} $$
 
 which is real.
@@ -140,7 +140,7 @@ $$ Q = \begin{bmatrix}
 Finally, we have our real $A = U^{\ast} Q^{\ast} \operatorname{diag}(\lambda^{-\frac{1}{2}})$.
 Since $U^{\ast} = \frac{1}{\sqrt{N}} F^{\ast} = \sqrt{N} F^{-1}$, samples can be obtained
 
-$$ x = \sqrt{N} \operatorname{IFFT}(Q^{\ast}(\lambda^{-\frac{1}{2}} \otimes \epsilon)) $$
+$$ x = \sqrt{N} \cdot \operatorname{ifft}(Q^{\ast}(\lambda^{-\frac{1}{2}} \otimes \epsilon)) $$
 
 Note that the operation $Q^{\ast}$ can be implemented as follows
 
