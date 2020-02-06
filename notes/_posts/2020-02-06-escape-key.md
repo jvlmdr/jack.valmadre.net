@@ -57,5 +57,3 @@ Key | Code | Rating | Reason
 Note that the key combinations `C-;`, `C-'`, `C-.`, `C-,` and `C-=` do not correspond to control characters.
 
 Just be careful; `C-]` can be right next to `C-\`, which sends SIGQUIT.
-
-asdf
