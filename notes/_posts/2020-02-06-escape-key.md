@@ -52,8 +52,10 @@ Key | Code | Rating | Reason
 `C-^` | 30 | no | no easy way to type?
 `C-/` | 31 | no | emacs (redo)
 `C--` | 31 | no | equal to `C-/`
-{: .table }
+{: .table}
 
 Note that the key combinations `C-;`, `C-'`, `C-.`, `C-,` and `C-=` do not correspond to control characters.
 
 Just be careful; `C-]` can be right next to `C-\`, which sends SIGQUIT.
+
+asdf
