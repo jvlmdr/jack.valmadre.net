@@ -39,7 +39,7 @@ Key | Rating | Reason
 `C-t` | maybe | emacs (transpose characters/lines)
 `C-u` | no | bash (kill to start of line); vim (page up)
 `C-v` | no | emacs (page down); vim (block-selection mode; insert control key)
-`C-w` | no | emacs (kill region); bash (kill previous word)
+`C-w` | no | emacs (kill region); bash (kill previous word); vimdiff (switch panes)
 `C-x` | no | emacs (start of key sequence)
 `C-y` | no | emacs (yank)
 `C-z` | maybe | bash (pause process and send to background)
