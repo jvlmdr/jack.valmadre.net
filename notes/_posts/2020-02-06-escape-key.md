@@ -23,7 +23,7 @@ Key | Code | Rating | Reason
 `C-a` | 1 | no | emacs (start of line)
 `C-b` | 2 | no | emacs (move cursor back)
 `C-c` | 3 | no | bash (sends SIGINT)
-`C-d` | 4 | no | vim (page down)
+`C-d` | 4 | no | end of transmission, exit shell; vim (page down)
 `C-e` | 5 | no | emacs (end of line)
 `C-f` | 6 | no | emacs (move cursor forward)
 `C-g` | 7 | no | emacs (abort command)
