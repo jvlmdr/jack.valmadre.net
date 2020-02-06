@@ -15,8 +15,11 @@ The criteria for an escape key are:
 * it should not have dramatic consequences outside of screen and
 * it should be easy to type (single modifier key).
 
+Here is an evaluation of all 32 ASCII control characters in order.
+
 Key | Rating | Reason
 ----|--------|-------
+`C-SPC` | no | emacs (set mark)
 `C-a` | no | emacs (start of line)
 `C-b` | no | emacs (move cursor back)
 `C-c` | no | bash (sends SIGINT)
@@ -43,14 +46,11 @@ Key | Rating | Reason
 `C-x` | no | emacs (start of key sequence)
 `C-y` | no | emacs (yank)
 `C-z` | maybe | bash (pause process and send to background)
-`C-SPC` | no | emacs (set mark)
+`C-[` | maybe | equal to `ESC`
 `C-\` | no | bash (sends SIGKILL)
+`C-]` | yes | can be dangerously near to `C-\`
+`C-^` | no | no easy way to type?
 `C-/` | no | emacs (redo)
-`C-;` |  | 
-`C-'` |  | 
-`C-.` |  | 
-`C-,` |  | 
-`C-[` |  |
-`C-]` |  | sometimes located next to `C-\`
-`C-=` |  | 
-`C--` |  | 
+`C--` | no | equal to `C-/`
+
+Note that the key combinations `C-;`, `C-'`, `C-.`, `C-,` and `C-=` do not correspond to control characters.
