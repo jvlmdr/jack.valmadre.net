@@ -17,6 +17,7 @@ The criteria for an escape key are:
 
 Here is an evaluation of all 32 ASCII control characters in order.
 
+{.table}
 Key | Code | Rating | Reason
 ----|------|--------|-------
 `C-SPC` | 0 | no | emacs (set mark)
