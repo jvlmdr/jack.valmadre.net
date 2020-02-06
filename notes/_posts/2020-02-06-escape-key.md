@@ -45,12 +45,14 @@ Key | Code | Rating | Reason
 `C-w` | 23 | no | emacs (kill region); bash (kill previous word); vimdiff (switch panes)
 `C-x` | 24 | no | emacs (start of key sequence)
 `C-y` | 25 | no | emacs (yank)
-`C-z` | 26 | maybe | bash (pause process and send to background)
-`C-[` | 27 | no | equal to `ESC` (prohibitive for vim)
-`C-\` | 28 | no | bash (sends SIGKILL)
-`C-]` | 29 | why not | can be dangerously near to `C-\`
+`C-z` | 26 | maybe | bash (sends SIGSTOP)
+`C-[` | 27 | no | escape key (prohibitive for vim)
+`C-\` | 28 | no | bash (sends SIGQUIT)
+`C-]` | 29 | yes |
 `C-^` | 30 | no | no easy way to type?
 `C-/` | 31 | no | emacs (redo)
 `C--` | 31 | no | equal to `C-/`
 
 Note that the key combinations `C-;`, `C-'`, `C-.`, `C-,` and `C-=` do not correspond to control characters.
+
+Just be careful; `C-]` can be right next to `C-\`, which sends SIGQUIT.
