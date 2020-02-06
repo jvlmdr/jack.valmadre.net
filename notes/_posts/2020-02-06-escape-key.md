@@ -27,12 +27,12 @@ Key | Rating | Reason
 `C-e` | no | emacs (end of line)
 `C-f` | no | emacs (move cursor forward)
 `C-g` | no | emacs (abort command)
-`C-h` | maybe | emacs (help prefix)
-`C-i` | no | vim (move cursor to next position in history)
-`C-j` | maybe | emacs (evaluate lisp expression); line feed
+`C-h` | no | backspace key; emacs (help prefix)
+`C-i` | no | tab key `\t`; vim (move cursor to next position in history)
+`C-j` | no | line feed `\n`; emacs (evaluate lisp expression)
 `C-k` | no | emacs (kill to end of line)
 `C-l` | no | bash (clear screen); emacs (scroll such that current line is at top/middle/bottom)
-`C-m` | maybe | return character
+`C-m` | no | return `\r`
 `C-n` | no | emacs (next line)
 `C-o` | no | vim (move cursor to previous position in history)
 `C-p` | no | emacs (previous line)
@@ -48,7 +48,7 @@ Key | Rating | Reason
 `C-z` | maybe | bash (pause process and send to background)
 `C-[` | no | equal to `ESC` (prohibitive for vim)
 `C-\` | no | bash (sends SIGKILL)
-`C-]` | yes | can be dangerously near to `C-\`
+`C-]` | why not | can be dangerously near to `C-\`
 `C-^` | no | no easy way to type?
 `C-/` | no | emacs (redo)
 `C--` | no | equal to `C-/`
