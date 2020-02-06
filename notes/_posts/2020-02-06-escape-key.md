@@ -46,7 +46,7 @@ Key | Rating | Reason
 `C-x` | no | emacs (start of key sequence)
 `C-y` | no | emacs (yank)
 `C-z` | maybe | bash (pause process and send to background)
-`C-[` | maybe | equal to `ESC`
+`C-[` | no | equal to `ESC` (prohibitive for vim)
 `C-\` | no | bash (sends SIGKILL)
 `C-]` | yes | can be dangerously near to `C-\`
 `C-^` | no | no easy way to type?
