@@ -11,18 +11,18 @@ The table below lists the properties that each LAPACK routine requires, and the 
 This information is available from the [documentation](http://www.netlib.org/lapack/double/).
 It's probably best to use the most specific algorithm.
 
-| Function | Properties                    | Factorisation | Subroutine        |
-|----------+-------------------------------+---------------+-------------------|
-| `Xgels`  | full rank                     | QR/LQ         | `Xgeqrf`/`Xgelqf` |
-| `Xgesv`  | full rank, square             | LU            | `Xgbtrf`          |
-| `Xsysv`  | full rank, symmetric          | LDL           | `Xsytrf`          |
-| `Xposv`  | full rank, symmetric, pos def | Cholesky      | `Xpotrf`          |
-
-.
+Function | Properties                    | Factorisation | Subroutine
+---------|-------------------------------|---------------|-----------
+`Xgels`  | full rank                     | QR/LQ         | `Xgeqrf`/`Xgelqf`
+`Xgesv`  | full rank, square             | LU            | `Xgbtrf`
+`Xsysv`  | full rank, symmetric          | LDL           | `Xsytrf`
+`Xposv`  | full rank, symmetric, pos def | Cholesky      | `Xpotrf`
+{: .table}
 
 If the matrix is not full rank, then you can use the SVD or the eigendecomposition, choose a threshold below which values are deemed to be zero, and then solve the system with matrix multiplication.
 
-| Function | Properties | Factorisation |
-|----------+------------+---------------|
-| `Xgesvd` |            | SVD           |
-| `Xsyev`  | symmetric  | eigen         |
+Function | Properties | Factorisation
+---------|------------|--------------
+`Xgesvd` |            | SVD
+`Xsyev`  | symmetric  | eigen
+{: .table}
