@@ -16,8 +16,7 @@ $$
 & = \pi_{1}^{2} + \cdots + \pi_{n}^{2} - \pi_{1} \\
 & = -\pi_{1}(1 - \pi_{1}) + \cdots + \pi_{n}^{2} \\
 & = -\pi_{1}(\pi_{2} + \cdots + \pi_{n}) + \pi_{2}^{2} + \cdots + \pi_{n}^{2} \\
-& = \underbrace{\pi_{2}}_{\ge 0} \underbrace{(\pi_{2} - \pi_{1})}_{\le 0} + \cdots + \pi_{n} (\pi_{n} - \pi_{1}) \\
-& \le 0
+& = \underbrace{\pi_{2}}_{\ge 0} \underbrace{(\pi_{2} - \pi_{1})}_{\le 0} + \cdots + \pi_{n} (\pi_{n} - \pi_{1}) \le 0
 \end{align}
 $$
 
