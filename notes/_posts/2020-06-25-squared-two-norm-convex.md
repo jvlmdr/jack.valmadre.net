@@ -4,11 +4,11 @@ title:  Inf-norm versus squared two-norm on probability simplex
 math:   true
 ---
 
-The $$\pi$$ be an $$n$$-dimensional vector on the probability simplex, that is $$\pi_{i} \ge 0$$ and $$\sum_{i} \pi_{i} = 1$$.
+Let $\pi$ be an $n$-dimensional vector on the probability simplex, that is $\pi_{i} \ge 0$ and $\sum_{i} \pi_{i} = 1$.
 
-It is trivial to show that $$\|\pi\|_{2} \ge \|\pi\|_{\infty}$$.
+It is trivial to show that $\|\pi\|_{2} \ge \|\pi\|_{\infty}$.
 Let us instead compare the _squared_ 2-norm to the infinity norm.
-Without loss of generality, assume that $$\pi_{1}$$ is the largest element.
+Without loss of generality, assume that $\pi_{1}$ is the largest element.
 
 $$
 \begin{align}
@@ -20,6 +20,6 @@ $$
 \end{align}
 $$
 
-Overall we have $$\|\pi\|_{2}^{2} \le \|\pi\|_{\infty} \le \|\pi\|_{2}$$.
+Overall we have $\|\pi\|_{2}^{2} \le \|\pi\|_{\infty} \le \|\pi\|_{2}$.
 
-This also provides a sufficient (and probably necessary) condition for equality: $$\pi_{i} = 0$$ or $$\pi_{i} = \pi_{1}$$ for all $$i$$.
+This also provides a sufficient (and probably necessary) condition for equality: $\pi_{i} = 0$ or $\pi_{i} = \pi_{1}$ for all $i$.
