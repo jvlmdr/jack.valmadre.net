@@ -6,7 +6,7 @@ math:   true
 
 Let $\pi$ be an $n$-dimensional vector on the probability simplex, that is $\pi_{i} \ge 0$ and $\sum_{i} \pi_{i} = 1$.
 
-It is trivial to show that $\|\pi\|_{2} \ge \|\pi\|_{\infty}$.
+It is trivial to show that `$\|\pi\|_{2} \ge \|\pi\|_{\infty}$`.
 Let us instead compare the _squared_ 2-norm to the infinity norm.
 Without loss of generality, assume that $\pi_{1}$ is the largest element.
 
