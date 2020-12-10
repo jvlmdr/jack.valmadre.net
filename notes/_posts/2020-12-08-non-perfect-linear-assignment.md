@@ -52,12 +52,12 @@ To illustrate the difference between this and the other problems, consider the b
 
 $$
 \begin{bmatrix}
-~ & -1 \\
+~ & 0 \\
 -2 & -4 \\
 \end{bmatrix}
 $$
 
-The solution to perfect/imperfect matching is to choose -1 and -2 for a total score of -3.
+The solution to perfect/imperfect matching is to choose 0 and -2 for a total score of -2.
 The solution to minimum-weight matching is to choose -4 alone.
 
 
