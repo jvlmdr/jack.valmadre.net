@@ -114,11 +114,11 @@ The table below outlines the different behaviour of several popular packages.
 
 Module | Function | Behaviour
 -------|----------|----------
-[`lapjv`](https://github.com/src-d/lapjv) | `lapjv()` | Requires that problem is balanced (or else raises an exception). Requires that a perfect matching exists (or else returns infinite cost).
-[`lap`](https://github.com/gatagat/lap) | `lapjv()` | Supports unbalanced problems (with `extend_cost=True`; although check issues [#21](https://github.com/gatagat/lap/issues/21), [#22](https://github.com/gatagat/lap/issues/22)). Requires that a maximal matching exists (or else returns infinite cost).
-[`scipy`](https://docs.scipy.org/doc/scipy/reference/optimize.html) | `linear_sum_assignment()` | Supports unbalanced problems. Requires that a maximal matching exists (or else raises an exception).
-[`lapsolver`](https://github.com/cheind/py-lapsolver) | `solve_dense()` | Supports unbalanced problems. Supports imperfect matching.
-[`ortools`](https://developers.google.com/optimization/assignment/linear_assignment) | `LinearSumAssignment` | Requires problem is balanced. Requires that a perfect matching exists (or else raises an exception). Requires that costs are integer-valued.
+[lapjv](https://github.com/src-d/lapjv) | `lapjv()` | Requires that problem is balanced (or else raises an exception). Requires that a perfect matching exists (or else returns infinite cost).
+[lap](https://github.com/gatagat/lap) | `lapjv()` | Supports unbalanced problems (with `extend_cost=True`; although check issues [#21](https://github.com/gatagat/lap/issues/21), [#22](https://github.com/gatagat/lap/issues/22)). Requires that a maximal matching exists (or else returns infinite cost).
+[scipy](https://docs.scipy.org/doc/scipy/reference/optimize.html) | `linear_sum_assignment()` | Supports unbalanced problems. Requires that a maximal matching exists (or else raises an exception).
+[lapsolver](https://github.com/cheind/py-lapsolver) | `solve_dense()` | Supports unbalanced problems. Supports imperfect matching.
+[ortools](https://developers.google.com/optimization/assignment/linear_assignment) | `LinearSumAssignment` | Requires problem is balanced. Requires that a perfect matching exists (or else raises an exception). Requires that costs are integer-valued.
 {: .table}
 
 [1]: https://en.wikipedia.org/wiki/Assignment_problem
