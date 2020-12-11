@@ -100,7 +100,7 @@ When using linear assignment, we should carefully consider which of the three pr
 
 ### Remarks
 
-#### Minimum-weight matching
+#### In support of minimum-weight matching
 
 The minimum-weight matching problem is often the most natural choice, since it puts no constraint on the size of the matching.
 To illustrate the difference between this and the other problems, consider the following balanced problem:
@@ -118,9 +118,7 @@ The solution to minimum-weight matching is to choose -4 with a cardinality of 1.
 Minimum-weight matching will never select an edge with positive cost: it is better to simply leave it unselected.
 Edges with zero cost have no impact.
 
-Most existing packages either solve perfect or imperfect matching.
-To use one of these solvers for the minimum-weight matching problem, it suffices to replace all positive edges (including infinite edges) with zero.
-If using a solver that leverages sparsity, it is better to use the technique described by Ramshaw and Tarjan.
+It may be more natural to consider the maximization of positive weights than the minimization of negative costs.
 
 #### Min-cost imperfect matching with positive weights
 
@@ -160,6 +158,10 @@ The resulting balanced graph has a perfect matching if and only if the original 
 If we need to solve imperfect matching but we only have a solver for perfect matching, it suffices to replace the infinite edge weights with a large, finite cost (e.g. larger than the total absolute value of all weights).
 The resulting graph must contain a perfect matching since it is a complete bipartite graph, and each high-cost edge is worth more than all original edges combined.
 The high-cost edges can be excluded at the end.
+
+Most existing packages either solve perfect, one-sided perfect or imperfect matching.
+To use one of these solvers for the minimum-weight matching problem, it suffices to replace all positive edges (including infinite edges) with zero.
+If using a solver that leverages sparsity, it is better to use the technique described by Ramshaw and Tarjan.
 
 
 ### Python packages
