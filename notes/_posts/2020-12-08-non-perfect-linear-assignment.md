@@ -167,6 +167,7 @@ If using a solver that leverages sparsity, it is better to use the technique des
 ### Python packages
 
 The table below outlines the different behaviour of several popular packages.
+The code that was used to determine the behaviour is available as a [Jupyter notebook](https://gist.github.com/jvlmdr/cfdef3de27653bed0aec93bbfb41481c).
 
 Module | Function | Behaviour
 -------|----------|----------
