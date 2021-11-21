@@ -57,3 +57,5 @@ Key | Code | Rating | Reason
 Note that the key combinations `C-;`, `C-'`, `C-.`, `C-,` and `C-=` do not correspond to control characters.
 
 Just be careful; `C-]` can be right next to `C-\`, which sends SIGQUIT.
+
+Update (Nov 2021): Thanks to Jay Freeman for pointing out that `C-]` is used to <a href="https://vim.fandom.com/wiki/Browsing_programs_with_tags">jump to a tag</a> in vim.
