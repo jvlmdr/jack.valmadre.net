@@ -2,7 +2,7 @@
 category:   papers
 title:      Learning feed-forward one-shot learners
 authors:    [Luca Bertinetto*, João F. Henriques*, Jack Valmadre*, Philip H. S. Torr, Andrea Vedaldi]
-conference: NIPS 2016
+conference: NeurIPS 2016
 ---
 
 {{ page.conference }},
