@@ -6,4 +6,5 @@ conference: CVPR 2022
 ---
 
 {{ page.conference }},
-<a href="https://openaccess.thecvf.com/content/CVPR2022/html/Iscen_Learning_With_Neighbor_Consistency_for_Noisy_Labels_CVPR_2022_paper.html">Paper</a>
+<a href="https://openaccess.thecvf.com/content/CVPR2022/html/Iscen_Learning_With_Neighbor_Consistency_for_Noisy_Labels_CVPR_2022_paper.html">Paper</a>,
+<a href="https://github.com/google-research/scenic/tree/main/scenic/projects/ncr">Code</a>
