@@ -1,6 +1,6 @@
 ---
 category:   papers
-title:      Oops, I Sampled it Again: Reinterpreting Confidence Intervals in Few-Shot Learning
+title:      "Oops, I sampled it again: Reinterpreting confidence intervals in few-shot learning"
 authors:    [Raphaël Lafargue, Luke A. Smith, Franck Vermet, Matthias Löwe, Ian Reid, Jack Valmadre, Vincent Gripon]
 conference: TMLR 2024
 ---
